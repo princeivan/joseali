@@ -1,0 +1,123 @@
+import { Accommodation } from "@/lib/types";
+import { placeholderImage } from "@/lib/images";
+
+// IMPORTANT: none of these are confirmed business partnerships yet.
+// Every card must be labelled "Recommended Accommodation" until the
+// business confirms an actual partnership (see isConfirmedPartner).
+export const accommodations: Accommodation[] = [
+  {
+    slug: "sunset-beach-resort-diani",
+    name: "Sunset Beach Resort",
+    location: "Diani Beach",
+    propertyType: "Resort",
+    shortDescription: "Beachfront resort with a family-friendly pool and easy beach access.",
+    description:
+      "A beachfront property in Diani with a mix of garden and sea-view rooms, a large pool, and direct access to the beach. A comfortable, straightforward option for families and couples.",
+    facilities: ["Beachfront pool", "Restaurant & bar", "Free Wi-Fi", "Airport transfer available"],
+    rooms: [
+      { name: "Garden View Room", description: "Comfortable double or twin room facing the gardens.", occupancy: "2 Adults" },
+      { name: "Sea View Room", description: "Upper-floor room with a private balcony facing the ocean.", occupancy: "2 Adults + 1 Child" },
+    ],
+    heroImage: { src: placeholderImage("sunset-beach-resort-hero"), alt: "Sunset Beach Resort pool and beach" },
+    cardImage: { src: placeholderImage("sunset-beach-resort-card"), alt: "Sunset Beach Resort" },
+    gallery: [
+      { src: placeholderImage("sunset-beach-1"), alt: "Resort pool" },
+      { src: placeholderImage("sunset-beach-2"), alt: "Resort room" },
+    ],
+    priceRangeKsh: { from: 8000, to: 18000 },
+    checkIn: "2:00 PM",
+    checkOut: "11:00 AM",
+    isConfirmedPartner: false,
+  },
+  {
+    slug: "sarova-whitesands-mombasa",
+    name: "Sarova Whitesands",
+    location: "Mombasa (Bamburi)",
+    propertyType: "Resort",
+    shortDescription: "Large established resort on Bamburi Beach with extensive grounds.",
+    description:
+      "A well-known Bamburi Beach property with extensive gardens, multiple pools and a long stretch of beach frontage — suited to families and longer stays.",
+    facilities: ["Multiple pools", "Spa", "Water sports", "Kids' club", "Several restaurants"],
+    rooms: [{ name: "Standard Room", description: "Spacious room with garden or sea view options.", occupancy: "2 Adults + 2 Children" }],
+    heroImage: { src: placeholderImage("sarova-whitesands-hero"), alt: "Sarova Whitesands beachfront" },
+    cardImage: { src: placeholderImage("sarova-whitesands-card"), alt: "Sarova Whitesands" },
+    gallery: [{ src: placeholderImage("sarova-1"), alt: "Resort grounds" }],
+    priceRangeKsh: { from: 12000, to: 30000 },
+    checkIn: "2:00 PM",
+    checkOut: "11:00 AM",
+    isConfirmedPartner: false,
+  },
+  {
+    slug: "aqua-resort-watamu",
+    name: "Aqua Resort",
+    location: "Watamu",
+    propertyType: "Resort",
+    shortDescription: "Quiet resort close to Watamu's marine park and reef.",
+    description:
+      "Set back from a quiet stretch of Watamu beach, close to the marine national park — a good base for diving, snorkelling and slower coastal days.",
+    facilities: ["Pool", "Restaurant", "Dive centre nearby", "Garden grounds"],
+    rooms: [{ name: "Deluxe Room", description: "Air-conditioned room with garden views.", occupancy: "2 Adults" }],
+    heroImage: { src: placeholderImage("aqua-resort-hero"), alt: "Aqua Resort Watamu" },
+    cardImage: { src: placeholderImage("aqua-resort-card"), alt: "Aqua Resort" },
+    gallery: [{ src: placeholderImage("aqua-1"), alt: "Resort pool at Watamu" }],
+    priceRangeKsh: { from: 10000, to: 20000 },
+    checkIn: "2:00 PM",
+    checkOut: "11:00 AM",
+    isConfirmedPartner: false,
+  },
+  {
+    slug: "mnarani-beach-hotel-mombasa",
+    name: "Mnarani Beach Hotel",
+    location: "Mombasa (Kilifi Creek)",
+    propertyType: "Hotel",
+    shortDescription: "Creek-side hotel with a quieter, more local coastal feel.",
+    description: "Set on Kilifi Creek rather than the open beach — a calmer setting with views over the water and easy access to Mombasa town.",
+    facilities: ["Pool", "Restaurant", "Creek-view terrace", "Free parking"],
+    rooms: [{ name: "Standard Room", description: "Comfortable room with creek or garden views.", occupancy: "2 Adults" }],
+    heroImage: { src: placeholderImage("mnarani-hero"), alt: "Mnarani Beach Hotel" },
+    cardImage: { src: placeholderImage("mnarani-card"), alt: "Mnarani Beach Hotel" },
+    gallery: [{ src: placeholderImage("mnarani-1"), alt: "Kilifi Creek view" }],
+    priceRangeKsh: { from: 7000, to: 15000 },
+    checkIn: "2:00 PM",
+    checkOut: "10:00 AM",
+    isConfirmedPartner: false,
+  },
+  {
+    slug: "diani-sea-resort",
+    name: "Diani Sea Resort",
+    location: "Diani Beach",
+    propertyType: "Resort",
+    shortDescription: "Central Diani location with easy access to restaurants and watersports.",
+    description: "Right in the heart of Diani's beach strip, close to restaurants, dive shops and watersports operators — good for travellers who want to walk everywhere.",
+    facilities: ["Beachfront pool", "Restaurant & bar", "Watersports desk", "Free Wi-Fi"],
+    rooms: [{ name: "Beach View Room", description: "Room facing the beach with a private balcony.", occupancy: "2 Adults" }],
+    heroImage: { src: placeholderImage("diani-sea-resort-hero"), alt: "Diani Sea Resort beachfront" },
+    cardImage: { src: placeholderImage("diani-sea-resort-card"), alt: "Diani Sea Resort" },
+    gallery: [{ src: placeholderImage("diani-sea-1"), alt: "Diani Sea Resort pool" }],
+    priceRangeKsh: { from: 9000, to: 22000 },
+    checkIn: "2:00 PM",
+    checkOut: "11:00 AM",
+    isConfirmedPartner: false,
+  },
+  {
+    slug: "kivuli-villas-malindi",
+    name: "Kivuli Villas",
+    location: "Malindi",
+    propertyType: "Boutique Lodge",
+    shortDescription: "Small, villa-style stay near Malindi's beach and marine park.",
+    description: "A small boutique property offering self-contained villas a short walk from the beach — suited to couples and small groups wanting privacy.",
+    facilities: ["Private villas", "Small pool", "Garden restaurant", "Airport transfer available"],
+    rooms: [{ name: "One-Bedroom Villa", description: "Self-contained villa with a private veranda.", occupancy: "2 Adults" }],
+    heroImage: { src: placeholderImage("kivuli-villas-hero"), alt: "Kivuli Villas Malindi" },
+    cardImage: { src: placeholderImage("kivuli-villas-card"), alt: "Kivuli Villas" },
+    gallery: [{ src: placeholderImage("kivuli-1"), alt: "Villa exterior" }],
+    priceRangeKsh: null,
+    checkIn: "2:00 PM",
+    checkOut: "11:00 AM",
+    isConfirmedPartner: false,
+  },
+];
+
+export function getAccommodationBySlug(slug: string) {
+  return accommodations.find((a) => a.slug === slug);
+}
