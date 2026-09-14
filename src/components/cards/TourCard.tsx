@@ -32,7 +32,7 @@ export default function TourCard({ tour }: { tour: Tour }) {
         <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-500">{tour.shortDescription}</p>
         <div className="mt-4 flex items-center justify-between border-t border-line pt-4">
           <div>
-            <p className="text-[11px] uppercase tracking-wide text-ink-500">From</p>
+            {/* <p className="text-[11px] uppercase tracking-wide text-ink-500">From</p> */}
             <p className="font-display text-lg text-forest-900">{formatKsh(tour.startingPriceKsh)}</p>
           </div>
           <Link

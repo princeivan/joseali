@@ -10,7 +10,7 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-forest-950">
       <div className="absolute inset-0">
         <Image
-          src={placeholderImage("hero-coastal-road", 1920, 1080)}
+          src={placeholderImage("hero", 980, 720)}
           alt="Tropical coastal road along the Kenyan coast with a safari transfer vehicle"
           fill
           priority
@@ -18,22 +18,33 @@ export default function Hero() {
           className="object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-forest-950/95 via-forest-950/65 to-forest-950/20" />
+        
       </div>
 
-      <div className="container-edge relative flex min-h-[560px] flex-col justify-center py-24 sm:min-h-[620px]">
-        <div className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-400">
-            Kenya Transport, Tours &amp; Safaris
-          </p>
-          <h1 className="mt-4 font-display text-4xl leading-[1.08] text-white sm:text-5xl lg:text-[3.4rem]">
-            Travel safe.
-            <br />
-            Explore more.
-          </h1>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-sand-100/90">
-            Reliable transport, unforgettable tours and comfortable travel experiences
-            across Kenya.
-          </p>
+      {/* <div className="container-edge relative flex min-h-[560px] flex-col justify-center py-3.5 sm:min-h-[620px]"> */}
+      <div className="relative z-10 mx-auto max-w-[1450px] px-5 pb-32 pt-10 sm:px-8 lg:px-12 lg:pt-10">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_420px] ">
+          <div className="max-w-[720px]">
+             <p className="mb-3 font-serif text-2xl italic text-[#c99312] sm:text-3xl">
+              Welcome to JoseAli Safaris
+            </p>
+
+            {/* Main heading */}
+            <h1 className="text-5xl font-extrabold leading-[0.95] tracking-tight text-[#d5ebe7] sm:text-6xl lg:text-7xl xl:text-[78px]">
+              Explore Kenya&apos;s
+              <br />
+              <span className="text-[#d5ebe7]">Beauty</span>
+            </h1>
+
+            {/* Services line */}
+            <p className="mt-5 text-lg font-semibold text-[#d5ebe7] sm:text-xl">
+              Travel • Tours • Accommodation • Transfers
+            </p>
+            {/* Description */}
+            <p className="mt-3 max-w-[560px] text-base leading-7 text-[#d5ebe7] sm:text-lg">
+              We offer reliable transport, unforgettable tours and comfortable
+              accommodation across Kenya.
+            </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/book"
@@ -43,9 +54,9 @@ export default function Hero() {
             </Link>
             <WhatsAppButton variant="outline" className="!text-white border-white/70 hover:!bg-white hover:!text-forest-950" />
           </div>
-        </div>
-
-        <div className="mt-12 w-full max-w-sm rounded-sm border border-white/15 bg-white/10 p-5 backdrop-blur-sm sm:mt-16">
+          </div>
+          {/* <div className="hidden justify-self-end lg:block">
+            <div className="mt-12 w-full max-w-sm rounded-sm border border-white/15 bg-white/10 p-5 backdrop-blur-sm sm:mt-16">
           <p className="text-xs font-semibold uppercase tracking-[0.1em] text-gold-400">
             Need Assistance?
           </p>
@@ -60,6 +71,12 @@ export default function Hero() {
             {siteConfig.contact.altContactName} — {siteConfig.contact.altContactRole}
           </p>
         </div>
+          </div> */}
+         
+          
+        </div>
+
+        
       </div>
     </section>
   );

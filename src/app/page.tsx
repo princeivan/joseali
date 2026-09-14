@@ -19,9 +19,9 @@ export default function HomePage() {
       <ServicesSection />
       <DestinationsSection />
       <WhyChooseUs />
-      <AboutPreview />
+      {/* <AboutPreview /> */}
       <ToursSection />
-      <AccommodationSection />
+      {/* <AccommodationSection /> */}
       <HowItWorks />
       <Testimonials />
       <Partners />

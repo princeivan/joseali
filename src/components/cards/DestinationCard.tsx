@@ -26,7 +26,7 @@ export default function DestinationCard({ destination }: { destination: Destinat
         <p className="mt-1 text-sm text-sand-100/85">{destination.shortDescription}</p>
         <div className="mt-3 flex items-center justify-between">
           <span className="text-xs text-sand-100/70">
-            From {formatKsh(destination.startingPriceKsh)}
+             {formatKsh(destination.startingPriceKsh)}
           </span>
           <span className="inline-flex items-center gap-1 text-xs font-medium text-white">
             Explore

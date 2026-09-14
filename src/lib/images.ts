@@ -13,5 +13,6 @@
  * and change this function to return `/images/${seed}.jpg`.
  */
 export function placeholderImage(seed: string, width = 1200, height = 800): string {
-  return `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`;
+  // return `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`;
+  return `/images/${seed}.png`
 }

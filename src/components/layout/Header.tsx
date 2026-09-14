@@ -6,6 +6,8 @@ import { Menu, X, ChevronDown, Compass, Phone } from "lucide-react";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CallButton from "@/components/ui/CallButton";
 import { siteConfig } from "@/lib/config";
+import { placeholderImage } from "@/lib/images";
+import Image from "next/image";
 
 const servicesLinks = [
   { label: "Airport Transfers", href: "/services/airport-transfers" },
@@ -62,8 +64,16 @@ export default function Header() {
       <div className="container-edge flex items-center justify-between py-3.5">
         <Link href="/" className="flex items-center gap-2.5">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-forest-900 text-gold-400">
-            <Compass className="h-5 w-5" aria-hidden="true" />
+            {/* <Compass className="h-5 w-5" aria-hidden="true" /> */}
+            <Image
+           src={placeholderImage("logo", 40, 40)}
+           alt={`${siteConfig.name} logo`}
+           width={40}
+           height={40}
+           className="rounded-full"
+           />
           </span>
+          
           <span className="flex flex-col leading-none">
             <span className="font-display text-lg tracking-wide text-forest-950">{siteConfig.name}</span>
             <span className="mt-0.5 text-[10px] uppercase tracking-[0.12em] text-ink-500">

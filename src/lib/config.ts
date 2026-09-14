@@ -17,10 +17,10 @@ export const siteConfig = {
     directorLabel: "Director",
     directorName: "JoseAli Safaris",
     // Primary WhatsApp / booking number
-    altContactName: "Elijah",
+    altContactName: "Joseph",
     altContactRole: "SGR & Airport Transfers",
-    phoneDisplay: "0728 539 686",
-    phoneE164: "+254728539686",
+    phoneDisplay: "0726 887 951",
+    phoneE164: "+254726887951",
     email: "info@josealisafaris.co.ke",
     // Location is intentionally general until the client confirms an exact address.
     city: "Mombasa, Kenya",
@@ -29,7 +29,7 @@ export const siteConfig = {
 
   whatsapp: {
     // WhatsApp number in international format, no + or leading zeros.
-    number: "254728539686",
+    number: "254726887951",
     defaultMessage: "Hello JoseAli Safaris, I would like to enquire about your services.",
   },
 

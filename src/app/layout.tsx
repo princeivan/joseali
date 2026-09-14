@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "JoseAli Safaris",
+    "JoseAli Tours",
     "Mombasa airport transfer",
     "SGR transfer Mombasa",
     "Kenya safari",
