@@ -122,6 +122,7 @@ export type BookingServiceType =
   | "SGR Transfer"
   | "Other Transport"
   | "Tour"
+  | "Car Hire"
   | "Safari"
   | "Accommodation"
   | "Marine Experience";

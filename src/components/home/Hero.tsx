@@ -26,7 +26,7 @@ export default function Hero() {
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_420px] ">
           <div className="max-w-[720px]">
              <p className="mb-3 font-serif text-2xl italic text-[#c99312] sm:text-3xl">
-              Welcome to JoseAli Safaris
+              Welcome to JoseAli Tours
             </p>
 
             {/* Main heading */}
@@ -38,7 +38,7 @@ export default function Hero() {
 
             {/* Services line */}
             <p className="mt-5 text-lg font-semibold text-[#d5ebe7] sm:text-xl">
-              Travel • Tours • Accommodation • Transfers
+              Travel | Tours | Accommodation | Transfers | Car Hire
             </p>
             {/* Description */}
             <p className="mt-3 max-w-[560px] text-base leading-7 text-[#d5ebe7] sm:text-lg">

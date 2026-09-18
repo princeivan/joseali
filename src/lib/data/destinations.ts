@@ -101,7 +101,7 @@ export const destinations: Destination[] = [
     shortDescription: "Wildlife beneath the shadow of Kilimanjaro.",
     overview:
       "Amboseli is known for its large elephant herds photographed against Mount Kilimanjaro's backdrop, along with swamps that draw wildlife year-round.",
-    heroImage: { src: placeholderImage("amboseli-hero"), alt: "Elephants with Kilimanjaro in the background" },
+    heroImage: { src: placeholderImage("amboseli-card"), alt: "Elephants with Kilimanjaro in the background" },
     cardImage: { src: placeholderImage("amboseli-card"), alt: "Amboseli landscape" },
     gallery: [
       { src: placeholderImage("amboseli-1"), alt: "Amboseli swamp wildlife" },
@@ -119,8 +119,8 @@ export const destinations: Destination[] = [
     shortDescription: "Experience one of Africa's greatest wildlife destinations.",
     overview:
       "Kenya's most famous reserve, home to the Great Migration between roughly July and October and reliably strong wildlife viewing throughout the year.",
-    heroImage: { src: placeholderImage("maasai-mara-hero"), alt: "Wildebeest crossing in the Maasai Mara" },
-    cardImage: { src: placeholderImage("maasai-mara-card"), alt: "Maasai Mara plains" },
+    heroImage: { src: placeholderImage("maasai-mara2"), alt: "Wildebeest crossing in the Maasai Mara" },
+    cardImage: { src: placeholderImage("maasai-mara-plain"), alt: "Maasai Mara plains" },
     gallery: [
       { src: placeholderImage("mara-1"), alt: "Maasai Mara savanna" },
       { src: placeholderImage("mara-2"), alt: "Lions in the Maasai Mara" },

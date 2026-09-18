@@ -1,4 +1,4 @@
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
 import { siteConfig, telLink, mailtoLink, whatsappLink } from "@/lib/config";
 
@@ -15,6 +15,10 @@ export default function TopBar() {
             {siteConfig.contact.phoneDisplay} — {siteConfig.contact.altContactName}
             <span className="text-sand-100/60">({siteConfig.contact.altContactRole})</span>
           </a>
+           <span className="hidden items-center gap-1.5 border-l border-white/15 pl-5 text-sand-100/70 xl:flex">
+            <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+            {siteConfig.location.name}
+          </span>
         </div>
         <div className="flex items-center gap-4">
           <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="hover:text-gold-400">

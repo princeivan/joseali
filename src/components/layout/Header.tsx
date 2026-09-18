@@ -70,7 +70,7 @@ export default function Header() {
            alt={`${siteConfig.name} logo`}
            width={40}
            height={40}
-           className="rounded-full"
+           className="h-auto w-[180px] md:w-[220px]"
            />
           </span>
           

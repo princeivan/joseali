@@ -3,6 +3,8 @@ import { Compass, Phone, Mail, MapPin } from "lucide-react";
 import { FacebookIcon, InstagramIcon, YoutubeIcon, TiktokIcon } from "@/components/ui/SocialIcons";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { siteConfig, telLink, mailtoLink } from "@/lib/config";
+import { placeholderImage } from "@/lib/images";
+import Image from "next/image";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -31,7 +33,13 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-2.5">
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-gold-400">
-              <Compass className="h-5 w-5" aria-hidden="true" />
+              <Image
+                         src={placeholderImage("logo", 40, 40)}
+                         alt={`${siteConfig.name} logo`}
+                         width={40}
+                         height={40}
+                         className="h-auto w-[180px] md:w-[220px]"
+                         />
             </span>
             <span className="font-display text-lg text-white">{siteConfig.name}</span>
           </div>
@@ -103,7 +111,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <MapPin className="h-4 w-4 shrink-0 text-gold-400" aria-hidden="true" />
-              {siteConfig.contact.city}
+              {siteConfig.location.name}
             </li>
           </ul>
           <div className="mt-4">
