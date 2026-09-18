@@ -75,7 +75,7 @@ export default function Header() {
           </span>
           
           <span className="flex flex-col leading-none">
-            <span className="font-display text-lg tracking-wide text-forest-950">{siteConfig.name}</span>
+            <span className="font-display text-lg tracking-wide text-forest-950">JOSEALI <span className="text-gold-400">TOURS</span></span>
             <span className="mt-0.5 text-[10px] uppercase tracking-[0.12em] text-ink-500">
               {siteConfig.tagline}
             </span>
