@@ -6,7 +6,7 @@ import DestinationsFilterList from "@/components/destinations/DestinationsFilter
 
 export const metadata: Metadata = {
   title: "Destinations",
-  description: "Discover Kenya's coast, safari parks, cities and marine destinations with JoseAli Safaris.",
+  description: "Discover Kenya's coast, safari parks, cities and marine destinations with JoseAli Tours.",
 };
 
 export default function DestinationsPage() {

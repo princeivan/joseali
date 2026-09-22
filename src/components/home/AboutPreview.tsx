@@ -10,7 +10,7 @@ export default function AboutPreview() {
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
             <Image
               src={placeholderImage("about-preview-main", 900, 1100)}
-              alt="JoseAli Safaris transfer vehicle on a coastal road"
+              alt="JoseAli Tours transfer vehicle on a coastal road"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               className="object-cover"
@@ -19,7 +19,7 @@ export default function AboutPreview() {
           <div className="absolute -bottom-6 -right-6 hidden h-40 w-52 overflow-hidden rounded-sm border-4 border-sand-50 shadow-lg sm:block">
             <Image
               src={placeholderImage("about-preview-secondary", 400, 320)}
-              alt="Traveller boarding a JoseAli Safaris vehicle"
+              alt="Traveller boarding a JoseAli Tours vehicle"
               fill
               sizes="220px"
               className="object-cover"
@@ -33,7 +33,7 @@ export default function AboutPreview() {
           </h2>
           <span className="mt-4 block h-[3px] w-14 bg-gold-500" aria-hidden="true" />
           <p className="mt-5 max-w-md text-base leading-relaxed text-ink-500">
-            JoseAli Safaris provides reliable transport, tours, travel and accommodation
+            JoseAli Tours provides reliable transport, tours, travel and accommodation
             services designed to make travelling across Kenya simple, comfortable and
             memorable.
           </p>
@@ -42,7 +42,7 @@ export default function AboutPreview() {
               href="/about"
               className="inline-flex items-center justify-center rounded-sm bg-forest-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-forest-800"
             >
-              About JoseAli Safaris
+              About JoseAli Tours
             </Link>
             <Link
               href="/services"

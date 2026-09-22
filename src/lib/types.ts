@@ -108,6 +108,7 @@ export type GalleryCategory =
   | "Safari"
   | "Tours"
   | "Marine"
+  | "Car Hire"
   | "Accommodation"
   | "Travel";
 

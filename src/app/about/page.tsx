@@ -9,7 +9,7 @@ import { placeholderImage } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about JoseAli Safaris, a Kenyan travel and transport company offering transfers, tours, safaris and accommodation across the coast.",
+  description: "Learn about JoseAli Tours, a Kenyan travel and transport company offering transfers, tours, safaris and accommodation across the coast.",
 };
 
 const values = [
@@ -25,10 +25,10 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="About JoseAli Safaris"
+        title="About JoseAli Tours"
         subtitle="Your trusted travel and transport partner."
         imageSeed="about-hero"
-        imageAlt="JoseAli Safaris vehicle on a Kenyan coastal road"
+        imageAlt="JoseAli Tours vehicle on a Kenyan coastal road"
       />
       <Breadcrumbs items={[{ label: "About Us" }]} />
 
@@ -37,14 +37,14 @@ export default function AboutPage() {
           <div>
             <SectionHeading eyebrow="Our story" title="Our Story" />
             <p className="mt-5 text-base leading-relaxed text-ink-500">
-              JoseAli Safaris is a Kenyan travel and transport company based on the coast,
+              JoseAli Tours is a Kenyan travel and transport company based on the coast,
               built around a simple idea: getting travellers where they need to go, safely
               and on time, whether that&apos;s an early-morning airport run, an SGR pickup, or a
               multi-day safari into Tsavo.
             </p>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
               We work with local and international travellers, families, couples, corporate
-              clients and hotel partners — coordinating transport, tours, accommodation
+              clients and hotel partners coordinating transport, tours, accommodation
               recommendations and marine excursions around each traveller&apos;s plans.
             </p>
           </div>

@@ -8,12 +8,12 @@ export const metadata: Metadata = { title: "Terms & Conditions" };
 export default function TermsPage() {
   return (
     <>
-      <PageHero title="Terms & Conditions" imageSeed="terms-hero" imageAlt="JoseAli Safaris vehicle" />
+      <PageHero title="Terms & Conditions" imageSeed="terms-hero" imageAlt="JoseAli Tours vehicle" />
       <Breadcrumbs items={[{ label: "Terms & Conditions" }]} />
       <section className="py-16">
         <div className="container-edge max-w-3xl space-y-6 text-sm leading-relaxed text-ink-700">
           <p className="text-xs uppercase tracking-wide text-ink-500">
-            Placeholder content — to be reviewed by JoseAli Safaris and a legal advisor before publishing.
+            Placeholder content — to be reviewed by JoseAli Tours and a legal advisor before publishing.
           </p>
           <div>
             <h2 className="font-display text-xl text-forest-950">Bookings</h2>

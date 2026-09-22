@@ -10,13 +10,13 @@ import { siteConfig, telLink, mailtoLink } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with JoseAli Safaris for transport, tours, safaris and accommodation enquiries across Kenya.",
+  description: "Get in touch with JoseAli Tours for transport, tours, safaris and accommodation enquiries across Kenya.",
 };
 
 export default function ContactPage() {
   return (
     <>
-      <PageHero title="Contact Us" subtitle="We're here to help plan your next journey." imageSeed="contact-hero" imageAlt="JoseAli Safaris office contact" />
+      <PageHero title="Contact Us" subtitle="We're here to help plan your next journey." imageSeed="contact-hero" imageAlt="JoseAli Tours office contact" />
       <Breadcrumbs items={[{ label: "Contact" }]} />
 
       <section className="py-16">
@@ -30,24 +30,27 @@ export default function ContactPage() {
 
             <div className="mt-7 space-y-5">
               <div className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden="true" />
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-blue-700" aria-hidden="true" />
                 <div>
                   <p className="text-sm text-ink-500">{siteConfig.contact.directorLabel}: {siteConfig.contact.directorName}</p>
-                  <a href={telLink()} className="font-medium text-forest-950 hover:text-gold-600">
+                  <a href={telLink()} className="font-medium text-forest-950 hover:text-blue-700">
                     {siteConfig.contact.phoneDisplay} — {siteConfig.contact.altContactName}
                   </a>
                   <p className="text-xs text-ink-500">{siteConfig.contact.altContactRole}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden="true" />
-                <a href={mailtoLink()} className="font-medium text-forest-950 hover:text-gold-600">
+                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-blue-700" aria-hidden="true" />
+                <a href={mailtoLink()} className="font-medium text-forest-950 hover:text-blue-700">
                   {siteConfig.contact.email}
                 </a>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden="true" />
-                <p className="font-medium text-forest-950">{siteConfig.contact.city}</p>
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-blue-700" aria-hidden="true" />
+                <div>
+                  <p className="font-medium text-forest-950">{siteConfig.location.name}</p>
+                  <p className="text-sm text-ink-500">{siteConfig.location.address}</p>
+                </div>
               </div>
             </div>
 
@@ -57,13 +60,13 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-7 flex items-center gap-4">
-              <a href={siteConfig.social.facebook} aria-label="Facebook" className="text-forest-900 hover:text-gold-600">
+              <a href={siteConfig.social.facebook} aria-label="Facebook" className="text-forest-900 hover:text-blue-700">
                 <FacebookIcon className="h-5 w-5" aria-hidden="true" />
               </a>
-              <a href={siteConfig.social.instagram} aria-label="Instagram" className="text-forest-900 hover:text-gold-600">
+              <a href={siteConfig.social.instagram} aria-label="Instagram" className="text-forest-900 hover:text-blue-700">
                 <InstagramIcon className="h-5 w-5" aria-hidden="true" />
               </a>
-              <a href={siteConfig.social.youtube} aria-label="YouTube" className="text-forest-900 hover:text-gold-600">
+              <a href={siteConfig.social.youtube} aria-label="YouTube" className="text-forest-900 hover:text-blue-700">
                 <YoutubeIcon className="h-5 w-5" aria-hidden="true" />
               </a>
             </div>
@@ -71,9 +74,10 @@ export default function ContactPage() {
             <div className="mt-10 overflow-hidden rounded-sm border border-line bg-sand-100">
               <div className="flex h-52 flex-col items-center justify-center gap-2 text-center">
                 <MapPin className="h-6 w-6 text-ink-500" aria-hidden="true" />
-                <p className="text-sm text-ink-500">Our Location</p>
-                <p className="text-xs text-ink-500">
-                  Map placeholder — exact business location to be confirmed.
+                <p className="text-sm font-medium text-forest-950">{siteConfig.location.name}</p>
+                <p className="text-xs text-ink-500">{siteConfig.location.address}</p>
+                <p className="text-[11px] text-ink-500/70">
+                  Interactive map coming soon — pin to be added once GPS coordinates are confirmed.
                 </p>
               </div>
             </div>

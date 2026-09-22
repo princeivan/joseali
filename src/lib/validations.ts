@@ -53,3 +53,16 @@ export const bookingRequestSchema = z.object({
 });
 
 export type BookingRequest = z.infer<typeof bookingRequestSchema>;
+
+export const contactRequestSchema = z.object({
+  name: z.string().trim().min(2, "Please enter your full name."),
+  phone: z.string().trim().min(7, "Please enter a valid phone number."),
+  email: z.string().trim().email("Please enter a valid email address.").optional().or(z.literal("")),
+  service: z.string().trim().optional().or(z.literal("")),
+  travelDate: z.string().trim().optional().or(z.literal("")),
+  message: z.string().trim().min(5, "Please enter a short message."),
+  // Honeypot field — real users never fill this in; bots often do.
+  website: z.string().optional().default(""),
+});
+
+export type ContactRequest = z.infer<typeof contactRequestSchema>;

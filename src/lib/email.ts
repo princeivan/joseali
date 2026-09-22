@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import { BookingRequest } from "@/lib/validations";
+import { BookingRequest, ContactRequest } from "@/lib/validations";
 import { siteConfig } from "@/lib/config";
 
 /**
@@ -139,6 +139,103 @@ export async function sendCustomerConfirmationEmail(
     return { success: true };
   } catch (err) {
     console.error("[email] Customer confirmation error:", err);
+    return { success: false, error: "Email request failed" };
+  }
+}
+
+function businessContactEmailHtml(contact: ContactRequest): string {
+  const rows = [
+    row("Name", contact.name),
+    row("Phone", contact.phone),
+    row("Email", contact.email),
+    row("Service", contact.service),
+    row("Travel Date", contact.travelDate),
+  ].join("");
+
+  return `
+  <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
+    <div style="background:#0B5D3B;padding:20px 24px;border-radius:8px 8px 0 0;">
+      <p style="margin:0;color:#ffffff;font-size:18px;font-weight:700;">New Contact Enquiry</p>
+      <p style="margin:4px 0 0;color:#EEF8F2;font-size:13px;">${siteConfig.name}</p>
+    </div>
+    <div style="border:1px solid #DCE7E2;border-top:none;border-radius:0 0 8px 8px;padding:20px 24px;">
+      <table style="width:100%;border-collapse:collapse;">${rows}</table>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid #DCE7E2;">
+        <p style="margin:0 0 6px;color:#5C6E66;font-size:13px;">Message</p>
+        <p style="margin:0;color:#10231B;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(contact.message)}</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function customerContactEmailHtml(contact: ContactRequest): string {
+  return `
+  <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;">
+    <div style="background:#0B5D3B;padding:20px 24px;border-radius:8px 8px 0 0;">
+      <p style="margin:0;color:#ffffff;font-size:18px;font-weight:700;">${siteConfig.name}</p>
+      <p style="margin:4px 0 0;color:#EEF8F2;font-size:13px;">${siteConfig.tagline}</p>
+    </div>
+    <div style="border:1px solid #DCE7E2;border-top:none;border-radius:0 0 8px 8px;padding:24px;">
+      <p style="color:#10231B;font-size:15px;">Hi ${escapeHtml(contact.name.split(" ")[0] || contact.name)},</p>
+      <p style="color:#3A4A43;font-size:14px;line-height:1.6;">
+        Thanks for reaching out to ${siteConfig.name}. We've received your message and our
+        team will get back to you shortly.
+      </p>
+      <p style="color:#3A4A43;font-size:14px;line-height:1.6;">
+        In the meantime, you can reach us directly on
+        <strong>${siteConfig.contact.phoneDisplay}</strong> or via WhatsApp.
+      </p>
+      <p style="margin-top:24px;color:#10231B;font-size:14px;">— The ${siteConfig.name} team</p>
+    </div>
+  </div>`;
+}
+
+export async function sendBusinessContactEmail(
+  contact: ContactRequest
+): Promise<{ success: boolean; error?: string }> {
+  const resend = getResendClient();
+  const businessEmail = process.env.BOOKING_EMAIL || siteConfig.contact.email;
+  if (!resend) return { success: false, error: "Email not configured" };
+
+  try {
+    const { error } = await resend.emails.send({
+      from: `${siteConfig.name} Website <bookings@${new URL(siteConfig.url).hostname}>`,
+      to: businessEmail,
+      subject: `New Contact Enquiry — ${siteConfig.name}`,
+      html: businessContactEmailHtml(contact),
+    });
+    if (error) {
+      console.error("[email] Business contact notification failed:", error);
+      return { success: false, error: error.message };
+    }
+    return { success: true };
+  } catch (err) {
+    console.error("[email] Business contact notification error:", err);
+    return { success: false, error: "Email request failed" };
+  }
+}
+
+export async function sendCustomerContactConfirmationEmail(
+  contact: ContactRequest
+): Promise<{ success: boolean; error?: string }> {
+  if (!contact.email) return { success: false, error: "No customer email supplied" };
+  const resend = getResendClient();
+  if (!resend) return { success: false, error: "Email not configured" };
+
+  try {
+    const { error } = await resend.emails.send({
+      from: `${siteConfig.name} <bookings@${new URL(siteConfig.url).hostname}>`,
+      to: contact.email,
+      subject: `We've received your message — ${siteConfig.name}`,
+      html: customerContactEmailHtml(contact),
+    });
+    if (error) {
+      console.error("[email] Customer contact confirmation failed:", error);
+      return { success: false, error: error.message };
+    }
+    return { success: true };
+  } catch (err) {
+    console.error("[email] Customer contact confirmation error:", err);
     return { success: false, error: "Email request failed" };
   }
 }

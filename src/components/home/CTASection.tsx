@@ -11,7 +11,7 @@ export default function CTASection() {
         <span className="mt-4 block h-[3px] w-14 bg-gold-500" aria-hidden="true" />
         <p className="mt-5 max-w-xl text-base leading-relaxed text-sand-100/85">
           Whether you need an airport transfer, SGR pickup, safari, accommodation or a
-          complete travel experience, JoseAli Safaris is ready to assist.
+          complete travel experience, JoseAli Tours is ready to assist.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link

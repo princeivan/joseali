@@ -6,13 +6,13 @@ import FareCalculator from "@/components/booking/FareCalculator";
 
 export const metadata: Metadata = {
   title: "Book Now",
-  description: "Request a transfer, tour, safari, accommodation or marine experience with JoseAli Safaris.",
+  description: "Request a transfer, tour, safari, accommodation or marine experience with JoseAli Tours.",
 };
 
 export default function BookPage() {
   return (
     <>
-      <PageHero title="Book Your Journey" subtitle="Tell us what you need — we'll confirm availability and pricing." imageSeed="book-hero" imageAlt="JoseAli Safaris vehicle ready for departure" />
+      <PageHero title="Book Your Journey" subtitle="Tell us what you need — we'll confirm availability and pricing." imageSeed="book-hero" imageAlt="JoseAli Tours vehicle ready for departure" />
       <Breadcrumbs items={[{ label: "Book Now" }]} />
       <section className="py-16">
         <div className="container-edge grid grid-cols-1 gap-10 lg:grid-cols-3">

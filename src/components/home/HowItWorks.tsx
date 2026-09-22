@@ -6,7 +6,7 @@ const steps = [
   { icon: MapPinned, title: "Select Your Destination", description: "Choose your pickup location, destination or package." },
   { icon: Send, title: "Send Your Request", description: "Enter your travel details through our booking form or WhatsApp." },
   { icon: BadgeCheck, title: "Get Confirmation", description: "Our team confirms availability and final pricing." },
-  { icon: PartyPopper, title: "Enjoy Your Journey", description: "Travel comfortably with JoseAli Safaris." },
+  { icon: PartyPopper, title: "Enjoy Your Journey", description: "Travel comfortably with JoseAli Tours." },
 ];
 
 export default function HowItWorks() {

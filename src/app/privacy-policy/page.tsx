@@ -8,12 +8,12 @@ export const metadata: Metadata = { title: "Privacy Policy" };
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <PageHero title="Privacy Policy" imageSeed="privacy-hero" imageAlt="JoseAli Safaris office" />
+      <PageHero title="Privacy Policy" imageSeed="privacy-hero" imageAlt="JoseAli Tours office" />
       <Breadcrumbs items={[{ label: "Privacy Policy" }]} />
       <section className="py-16">
         <div className="container-edge max-w-3xl space-y-6 text-sm leading-relaxed text-ink-700">
           <p className="text-xs uppercase tracking-wide text-ink-500">
-            Placeholder content — to be reviewed by JoseAli Safaris and a legal advisor before publishing.
+            Placeholder content — to be reviewed by JoseAli Tours and a legal advisor before publishing.
           </p>
           <div>
             <h2 className="font-display text-xl text-forest-950">Information we collect</h2>

@@ -7,7 +7,7 @@ import { services } from "@/lib/data/services";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Airport transfers, SGR transfers, local and corporate transport, bush safaris and marine experiences from JoseAli Safaris.",
+  description: "Airport transfers, SGR transfers, local and corporate transport, bush safaris and marine experiences from JoseAli Tours.",
 };
 
 export default function ServicesPage() {
@@ -17,7 +17,7 @@ export default function ServicesPage() {
         title="Our Services"
         subtitle="Transport, safaris and marine experiences, arranged around your journey."
         imageSeed="services-hero"
-        imageAlt="JoseAli Safaris fleet vehicle"
+        imageAlt="JoseAli Tours fleet vehicle"
       />
       <Breadcrumbs items={[{ label: "Services" }]} />
       <section className="py-16">

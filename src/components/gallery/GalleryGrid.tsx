@@ -9,6 +9,7 @@ import { GalleryCategory } from "@/lib/types";
 const categories: Array<GalleryCategory | "All"> = [
   "All",
   "Vehicles",
+  "Car Hire",
   "Beach",
   "Safari",
   "Tours",

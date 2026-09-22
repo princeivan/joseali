@@ -143,7 +143,7 @@ export default function BookingWidget() {
 
             <div className="mt-5 flex flex-wrap gap-3">
               <WhatsAppButton
-                message={`Hello JoseAli Safaris, I would like to book a ${tab.toLowerCase()} from ${pickup} to ${dropoff} on ${date}${time ? " at " + time : ""} for ${passengers} passenger(s).`}
+                message={`Hello JoseAli Tours, I would like to book a ${tab.toLowerCase()} from ${pickup} to ${dropoff} on ${date}${time ? " at " + time : ""} for ${passengers} passenger(s).`}
               />
               <CallButton />
               <button

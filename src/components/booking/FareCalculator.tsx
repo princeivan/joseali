@@ -88,7 +88,7 @@ export default function FareCalculator() {
 
       <div className="mt-4">
         <WhatsAppButton
-          message={`Hello JoseAli Safaris, I'd like a fare quote from ${origin} to ${destination} for ${passengers} passenger(s).`}
+          message={`Hello JoseAli Tours, I'd like a fare quote from ${origin} to ${destination} for ${passengers} passenger(s).`}
         />
       </div>
     </div>

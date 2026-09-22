@@ -1,4 +1,4 @@
-import { BookingRequest } from "@/lib/validations";
+import { BookingRequest, ContactRequest } from "@/lib/validations";
 import { siteConfig } from "@/lib/config";
 
 /**
@@ -21,7 +21,45 @@ import { siteConfig } from "@/lib/config";
  * without changing anything that calls this function.
  */
 
-function formatWhatsAppMessage(booking: BookingRequest): string {
+async function sendWhatsAppTextMessage(message: string): Promise<{ success: boolean; error?: string }> {
+  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
+  const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
+  const recipient = process.env.WHATSAPP_RECIPIENT_PHONE || siteConfig.whatsapp.number;
+
+  if (!phoneNumberId || !accessToken) {
+    console.warn("[whatsapp] Skipping notification — WHATSAPP_PHONE_NUMBER_ID or WHATSAPP_ACCESS_TOKEN not configured.");
+    return { success: false, error: "WhatsApp not configured" };
+  }
+
+  try {
+    const res = await fetch(`https://graph.facebook.com/v20.0/${phoneNumberId}/messages`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messaging_product: "whatsapp",
+        to: recipient,
+        type: "text",
+        text: { body: message },
+      }),
+    });
+
+    if (!res.ok) {
+      const errorBody = await res.text();
+      console.error("[whatsapp] Notification failed:", res.status, errorBody);
+      return { success: false, error: `WhatsApp API responded ${res.status}` };
+    }
+
+    return { success: true };
+  } catch (err) {
+    console.error("[whatsapp] Notification error:", err);
+    return { success: false, error: "WhatsApp request failed" };
+  }
+}
+
+function formatBookingWhatsAppMessage(booking: BookingRequest): string {
   const lines = [
     "🚐 NEW JOSEALI TOURS BOOKING",
     "",
@@ -61,39 +99,31 @@ function formatWhatsAppMessage(booking: BookingRequest): string {
 export async function sendWhatsAppBookingNotification(
   booking: BookingRequest
 ): Promise<{ success: boolean; error?: string }> {
-  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
-  const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
-  const recipient = process.env.WHATSAPP_RECIPIENT_PHONE || siteConfig.whatsapp.number;
+  return sendWhatsAppTextMessage(formatBookingWhatsAppMessage(booking));
+}
 
-  if (!phoneNumberId || !accessToken) {
-    console.warn("[whatsapp] Skipping notification — WHATSAPP_PHONE_NUMBER_ID or WHATSAPP_ACCESS_TOKEN not configured.");
-    return { success: false, error: "WhatsApp not configured" };
-  }
+function formatContactWhatsAppMessage(contact: ContactRequest): string {
+  const lines = [
+    "✉️ NEW JOSEALI TOURS ENQUIRY",
+    "",
+    "Name:",
+    contact.name,
+    "",
+    "Phone:",
+    contact.phone,
+  ];
 
-  try {
-    const res = await fetch(`https://graph.facebook.com/v20.0/${phoneNumberId}/messages`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        messaging_product: "whatsapp",
-        to: recipient,
-        type: "text",
-        text: { body: formatWhatsAppMessage(booking) },
-      }),
-    });
+  if (contact.email) lines.push("", "Email:", contact.email);
+  if (contact.service) lines.push("", "Service:", contact.service);
+  if (contact.travelDate) lines.push("", "Travel Date:", contact.travelDate);
+  lines.push("", "Message:", contact.message);
+  lines.push("", "Status:", "CONTACT ENQUIRY");
 
-    if (!res.ok) {
-      const errorBody = await res.text();
-      console.error("[whatsapp] Notification failed:", res.status, errorBody);
-      return { success: false, error: `WhatsApp API responded ${res.status}` };
-    }
+  return lines.join("\n");
+}
 
-    return { success: true };
-  } catch (err) {
-    console.error("[whatsapp] Notification error:", err);
-    return { success: false, error: "WhatsApp request failed" };
-  }
+export async function sendWhatsAppContactNotification(
+  contact: ContactRequest
+): Promise<{ success: boolean; error?: string }> {
+  return sendWhatsAppTextMessage(formatContactWhatsAppMessage(contact));
 }
