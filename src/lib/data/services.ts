@@ -7,7 +7,7 @@ export const services: Service[] = [
     name: "Airport Transfers",
     shortDescription: "Comfortable and reliable airport pickups and drop-offs.",
     description:
-      "Landing in Mombasa or flying out for your next trip? We track your flight, meet you at arrivals and get you on the road without delay. The same applies in reverse — tell us your flight time and we'll have you at check-in with time to spare.",
+      "Landing in Mombasa/Malindi/Diani or flying out for your next trip? We track your flight, meet you at arrivals and get you on the road without delay. The same applies in reverse — tell us your flight time and we'll have you at check-in with time to spare.",
     heroImage: { src: placeholderImage("airport-transfer-hero"), alt: "Private vehicle waiting at a Kenyan airport pickup point" },
     cardImage: { src: placeholderImage("airport-transfer-card"), alt: "Airport transfer vehicle" },
     icon: "plane",
@@ -24,7 +24,7 @@ export const services: Service[] = [
       "Families arriving with luggage and children",
       "Groups and corporate delegations",
     ],
-    popularRoutes: ["Moi International Airport – Nyali", "Moi International Airport – Diani", "Moi International Airport – Mombasa CBD"],
+    popularRoutes: ["Moi International Airport – Nyali", "Moi International Airport – Diani", "Moi International Airport – Mombasa CBD","Malindi Airport – Mombasa CBD","Malindi Airport – Watamu/Malindi","Watamu/Malindi – Malindi-Airport","Ukunda Airport – Diani","Ukunda Airport – Mombasa CBD"],
     faqs: [
       { question: "What happens if my flight is delayed?", answer: "We track your flight number, so your driver adjusts pickup time automatically at no extra charge." },
       { question: "Do you provide child seats?", answer: "Let us know when booking and we'll arrange one where available." },

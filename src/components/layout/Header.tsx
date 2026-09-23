@@ -14,6 +14,7 @@ const servicesLinks = [
   { label: "SGR Transfers", href: "/services/sgr-transfers" },
   { label: "Local Transfers", href: "/services/other-transfers" },
   { label: "Corporate Transport", href: "/services/corporate-transport" },
+  { label: "Accommodation", href: "/accommodation" },
 ];
 
 const toursLinks = [
@@ -30,7 +31,7 @@ const navLinks = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services", dropdown: servicesLinks },
   { label: "Tours & Travel", href: "/tours", dropdown: toursLinks },
-  { label: "Accommodation", href: "/accommodation" },
+  // { label: "Accommodation", href: "/accommodation" },
   { label: "Destinations", href: "/destinations" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
@@ -63,19 +64,19 @@ export default function Header() {
     >
       <div className="container-edge flex items-center justify-between py-3.5">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-forest-900 text-gold-400">
-            {/* <Compass className="h-5 w-5" aria-hidden="true" /> */}
+          <div className="flex items-center">
             <Image
-           src={placeholderImage("logo", 40, 40)}
-           alt={`${siteConfig.name} logo`}
-           width={40}
-           height={40}
-           className="h-auto w-[180px] md:w-[220px]"
-           />
-          </span>
+              src="/images/logo.png"
+              alt={`${siteConfig.name} logo`}
+              width={220}
+              height={70}
+              priority
+              className="h-auto w-[60px] object-contain sm:w-[60px] md:w-[60px]"
+            />
+          </div>
           
           <span className="flex flex-col leading-none">
-            <span className="font-display text-lg tracking-wide text-forest-950">JOSEALI <span className="text-gold-400">TOURS</span></span>
+            <span className="font-display text-lg tracking-wide text-forest-950">JOSEALI <span className="text-orange-600">TOURS</span></span>
             <span className="mt-0.5 text-[10px] uppercase tracking-[0.12em] text-ink-500">
               {siteConfig.tagline}
             </span>
@@ -131,7 +132,7 @@ export default function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             href="/book"
-            className="rounded-sm bg-gold-500 px-5 py-2.5 text-sm font-semibold text-forest-950 transition-colors hover:bg-gold-400"
+            className="rounded-sm bg-orange-400 px-5 py-2.5 text-sm font-semibold text-forest-950 transition-colors hover:bg-gold-400"
           >
             Book Now
           </Link>
@@ -194,13 +195,13 @@ export default function Header() {
             </div>
           ))}
         </nav>
-        <div className="flex flex-col gap-3 px-5 py-5">
+        <div className="flex flex-col gap-6 px-5 py-5">
           <CallButton variant="outline" />
           <WhatsAppButton variant="solid" />
           <Link
             href="/book"
             onClick={() => setMobileOpen(false)}
-            className="flex items-center justify-center gap-2 rounded-sm bg-gold-500 px-5 py-3 text-sm font-semibold text-forest-950"
+            className="flex items-center justify-center gap-2 rounded-sm bg-orange-400 px-5 py-3 text-sm font-semibold text-forest-950"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
             Book Now

@@ -49,7 +49,7 @@ export const bookingRequestSchema = z.object({
 
   notes: z.string().trim().optional().or(z.literal("")),
   // Honeypot field — real users never fill this in; bots often do.
-  website: z.string().max(0, "Spam detected.").optional().or(z.literal("")),
+  website: z.string().optional().default(""),
 });
 
 export type BookingRequest = z.infer<typeof bookingRequestSchema>;

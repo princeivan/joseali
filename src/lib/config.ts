@@ -8,7 +8,7 @@
 
 export const siteConfig = {
   name: "JoseAli Tours",
-  tagline: "Safe Journeys. Memorable Experiences.",
+  tagline: "Safe Journey. Memorable Experiences.",
   description:
     "JoseAli Tours provides reliable airport and SGR transfers, tours, safaris, accommodation and travel experiences across Kenya.",
   url: "https://josealisafaris.co.ke",

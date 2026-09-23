@@ -10,7 +10,7 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-forest-950">
       <div className="absolute inset-0">
         <Image
-          src={placeholderImage("hero", 980, 720)}
+          src={placeholderImage("hero1", 980, 720)}
           alt="Tropical coastal road along the Kenyan coast with a safari transfer vehicle"
           fill
           priority
