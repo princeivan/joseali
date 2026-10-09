@@ -8,10 +8,10 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CallButton from "@/components/ui/CallButton";
 
 type Tab = "Airport Transfer" | "SGR Transfer" | "Other Transfers";
-const tabs: { key: Tab; icon: typeof Plane }[] = [
-  { key: "Airport Transfer", icon: Plane },
-  { key: "SGR Transfer", icon: TrainFront },
-  { key: "Other Transfers", icon: Car },
+const tabs: { id: string; key: Tab; icon: typeof Plane }[] = [
+  { id: "airport", key: "Airport Transfer", icon: Plane },
+  { id: "sgr", key: "SGR Transfer", icon: TrainFront },
+  { id: "other", key: "Other Transfers", icon: Car },
 ];
 
 type Result = { type: "fare"; amount: number } | { type: "quote" } | null;
@@ -45,9 +45,9 @@ export default function BookingWidget() {
   }
 
   return (
-    <div className="relative left-1/2 z-10 w-[calc(100%-48px)] max-w-[1240px] -translate-x-1/2 sm:-mt-12 lg:-mt-12">
-      <div className="rounded-sm border border-line bg-white shadow-xl">
-        <div className="flex border-b border-line">
+    <div className="relative left-1/2 z-10 w-[calc(100%-48px)] max-w-[1240px] -translate-x-1/2 sm:-mt-8 sm:px-6 lg:-mt-12">
+      <div className="overflow-hidden border-y border-[#E6DED0] bg-white shadow-[0_8px_28px_rgba(15,45,38,0.10)] sm:rounded-xl sm:border">
+        {/* <div className="grid grid-cols-3 border-b border-[#E6DED0] bg-[#FAF8F2]">
           {tabs.map(({ key, icon: Icon }) => (
             <button
               key={key}
@@ -66,6 +66,12 @@ export default function BookingWidget() {
               <span className="hidden sm:inline">{key}</span>
             </button>
           ))}
+        </div> */}
+        <div className="grid grid-cols-3 border-b border-[#E6DED0] bg-[#FAF8F2]">
+          {tabs.map(({id,key,icon: Icon})=><button key={id} type="button" onClick={() => {
+                setTab(key);
+                reset();
+              }} aria-pressed={tab === key} className={`flex min-h-12 flex-col items-center justify-center gap-1 px-1 py-2 text-[11px] font-semibold sm:min-h-[58px] sm:flex-row sm:gap-2 sm:text-sm ${tab === key ? "bg-[#073C32] text-white" : "text-[#43574F] hover:bg-[#EAF3EE]"}`}><Icon size={17}/><span className="hidden min-[370px]:inline">{key}</span><span className="min-[370px]:hidden">{id==="airport"?"Airport":id==="sgr"?"SGR":"Other"}</span></button>)}
         </div>
 
         {!submitted ? (

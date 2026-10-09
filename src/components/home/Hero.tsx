@@ -68,23 +68,23 @@ export default function Hero() {
 
         <div className="relative mx-auto flex h-full max-w-[1240px] items-center px-6">
           <div className="-mt-12 max-w-[570px]">
-            <div className="text-[13px] font-extrabold tracking-[3px]">WELCOME TO JOSEALI TOURS</div>
-            <div className="my-4 h-[3px] w-7 bg-[#28a953]" />
-            <h1 className="text-[42px] font-extrabold leading-[1.04] tracking-[-1.5px] sm:text-[46px]">
+            {/* <div className="text-[13px] font-extrabold tracking-[3px]">WELCOME TO JOSEALI TOURS</div>
+            <div className="my-4 h-[3px] w-7 bg-[#28a953]" /> */}
+            <h1 className="mt-4 text-[36px] font-extrabold leading-[1.04] tracking-[-1.1px] sm:text-[46px]">
               Discover Kenya&apos;s
               <br />
               <span className="text-[#4ed16a]">Breathtaking Beauty</span>
             </h1>
-            <p className="mt-4 max-w-[510px] text-[15px] leading-6">
+            <p className="mt-4 max-w-[510px] text-[15px] leading-[1.6] text-white sm:text-base">
               From stunning beaches to thrilling safaris, cultural experiences
               and unforgettable adventures,We create journeys that inspire
               and stay with you forever.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <a href="destinations" className="inline-flex items-center gap-2 rounded-lg bg-[#168f4b] px-5 py-3.5 text-sm font-bold transition hover:bg-[#107b3e]">
+            <div className="mt-5 flex flex-col items-stretch gap-3 min-[420px]:flex-row min-[420px]:items-center">
+              <a href="destinations" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#168447] px-5 py-3 text-sm font-bold text-white hover:bg-[#0F713B]]">
                 <Compass size={18} /> Explore Our Tours
               </a>
-              <a href="gallery" className="inline-flex items-center gap-2 rounded-lg border border-white/85 px-5 py-3.5 text-sm font-bold">
+              <a href="gallery" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/80 bg-black/10 px-5 py-3 text-sm font-bold text-white">
                 <span className="text-[10px]">▶</span> Watch Our Story
               </a>
             </div>
