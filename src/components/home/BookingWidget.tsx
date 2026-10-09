@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Plane, TrainFront, Car, CheckCircle2 } from "lucide-react";
+import { Plane, TrainFront, Car, CheckCircle2, Calendar, Search, ChevronDown, CalendarDays, Clock3, LocateIcon, } from "lucide-react";
 import { findFare } from "@/lib/data/fares";
 import { formatKsh } from "@/lib/format";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
@@ -45,7 +45,7 @@ export default function BookingWidget() {
   }
 
   return (
-    <div className="relative z-10 mx-auto -mt-16 w-full max-w-5xl px-4 sm:-mt-20 lg:-mt-24">
+    <div className="relative left-1/2 z-10 w-[calc(100%-48px)] max-w-[1240px] -translate-x-1/2 sm:-mt-12 lg:-mt-12">
       <div className="rounded-sm border border-line bg-white shadow-xl">
         <div className="flex border-b border-line">
           {tabs.map(({ key, icon: Icon }) => (
@@ -88,25 +88,31 @@ export default function BookingWidget() {
                 className="input-field"
               />
             </Field>
+            
             <Field label="Date">
               <input required type="date" value={date} onChange={(e) => setDate(e.target.value)} className="input-field" />
             </Field>
+            
             <Field label="Time">
               <input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="input-field" />
             </Field>
+            
             <Field label="Passengers">
               <select value={passengers} onChange={(e) => setPassengers(e.target.value)} className="input-field">
                 {["1", "2", "3", "4", "5", "6+"].map((n) => (
                   <option key={n} value={n}>
                     {n}
+                    
                   </option>
                 ))}
+                
               </select>
             </Field>
             <button
               type="submit"
-              className="flex items-center justify-center rounded-sm bg-gold-500 px-4 py-3 text-sm font-semibold text-forest-950 transition-colors hover:bg-gold-400 lg:col-span-1"
+              className="flex items-center justify-center rounded-sm bg-green-700 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-800 lg:col-span-1"
             >
+              <Search className="mr-2 h-4.5 w-4.5" aria-hidden="true" />
               Get Fare / Book
             </button>
           </form>

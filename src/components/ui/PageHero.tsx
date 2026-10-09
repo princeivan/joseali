@@ -27,12 +27,12 @@ export default function PageHero({
       <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/50 to-forest-950/20" />
 
       <div className="container-edge relative pb-8">
-        <h1 className="font-display text-3xl text-white sm:text-4xl">
+        <h1 className="font-display text-3xl font-bold text-white sm:text-4xl">
           {title}
         </h1>
 
         {subtitle && (
-          <p className="mt-2 max-w-lg text-sm text-sand-100/85">
+          <p className="mt-2 max-w-lg font-semibold text-sm text-sand-100/85">
             {subtitle}
           </p>
         )}

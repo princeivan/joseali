@@ -63,14 +63,14 @@ export default function AboutPage() {
       <section className="bg-sand-100 py-16">
         <div className="container-edge grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="rounded-sm border border-line bg-white p-7">
-            <h3 className="font-display text-xl text-forest-950">Our Mission</h3>
+            <h3 className="font-display font-semibold text-xl text-[#18364a]">Our Mission</h3>
             <p className="mt-3 text-sm leading-relaxed text-ink-500">
               To provide exceptional travel services that exceed our customers&apos;
               expectations while promoting Kenya&apos;s natural beauty and culture.
             </p>
           </div>
           <div className="rounded-sm border border-line bg-white p-7">
-            <h3 className="font-display text-xl text-forest-950">Our Vision</h3>
+            <h3 className="font-display font-semibold text-xl text-[#18364a]">Our Vision</h3>
             <p className="mt-3 text-sm leading-relaxed text-ink-500">
               To be a leading travel and transport company in Kenya and East Africa, known
               for reliability, professionalism and customer satisfaction.
@@ -88,7 +88,7 @@ export default function AboutPage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-forest-900/5 text-forest-900">
                   <v.icon className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <span className="text-sm text-ink-700">{v.label}</span>
+                <span className="text-sm font-semibold text-ink-700">{v.label}</span>
               </div>
             ))}
           </div>

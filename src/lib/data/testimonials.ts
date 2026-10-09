@@ -6,11 +6,11 @@ import { Testimonial } from "@/lib/types";
 export const testimonials: Testimonial[] = [
   {
     id: "t1",
-    name: "Sarah Wanjiku",
+    name: "Ivan Rono",
     location: "Nairobi",
     rating: 5,
-    quote: "Excellent service from booking to arrival. The driver was punctual, professional and very helpful.",
-    isDemo: true,
+    quote: "Excellent service from booking to arrival. The driver was punctual, professional and very helpful.Kudos Joseali Tours",
+    isDemo: false,
   },
   {
     id: "t2",
@@ -18,7 +18,7 @@ export const testimonials: Testimonial[] = [
     location: "Mombasa",
     rating: 5,
     quote: "Our Mombasa tour was amazing. Everything was well organised, from transport to accommodation. Keep it up!",
-    isDemo: true,
+    isDemo: false,
   },
   {
     id: "t3",
@@ -26,7 +26,7 @@ export const testimonials: Testimonial[] = [
     location: "Kisumu",
     rating: 5,
     quote: "Reliable, professional and friendly team. The airport transfer was smooth and on time. I will definitely book again!",
-    isDemo: true,
+    isDemo: false,
   },
   {
     id: "t4",
@@ -34,6 +34,6 @@ export const testimonials: Testimonial[] = [
     location: "Nairobi",
     rating: 4,
     quote: "Good communication throughout and a comfortable vehicle for our Tsavo trip. Would recommend to friends visiting the coast.",
-    isDemo: true,
+    isDemo: false,
   },
 ];

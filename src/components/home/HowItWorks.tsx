@@ -11,7 +11,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20">
+    <section className="py-6 sm:py-10 lg:py-12">
       <div className="container-edge">
         <SectionHeading eyebrow="Getting started" title="How it works" align="center" className="mx-auto" />
         <div className="relative mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
@@ -22,13 +22,15 @@ export default function HowItWorks() {
           />
           {steps.map((step, i) => (
             <div key={step.title} className="relative flex flex-col items-center text-center">
-              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 bg-sand-50 text-forest-900">
+              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-green-500 bg-sand-50 text-forest-900">
                 <step.icon className="h-5 w-5" aria-hidden="true" />
               </div>
-              <span className="mt-3 text-[11px] font-semibold uppercase tracking-wide text-gold-600">
+              <span className="mt-3 text-[11px] font-semibold uppercase tracking-wide text-green-600">
                 Step {i + 1}
               </span>
-              <h3 className="mt-1 font-display text-base text-forest-950">{step.title}</h3>
+              <h3 className="mt-1 font-display font-semibold text-base text-[#18364a]">
+                {step.title}
+              </h3>
               <p className="mt-1.5 max-w-[180px] text-xs leading-relaxed text-ink-500">
                 {step.description}
               </p>

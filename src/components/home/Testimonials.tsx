@@ -15,7 +15,7 @@ export default function Testimonials() {
   const visible = testimonials.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
 
   return (
-    <section className="py-20">
+    <section className="py-4 sm:py-10 lg:py-12">
       <div className="container-edge">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading eyebrow="Client stories" title="What our clients say" />
@@ -46,7 +46,7 @@ export default function Testimonials() {
           ))}
         </div>
         <div className="mt-6 text-center">
-          <Link href="/contact" className="text-sm font-medium text-forest-900 link-underline">
+          <Link href="/contact" className="text-sm font-semibold text-green-900 link-underline">
             View all reviews
           </Link>
         </div>

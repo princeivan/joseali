@@ -16,21 +16,21 @@ export default function SectionHeading({
   className = "",
 }: Props) {
   const isCenter = align === "center";
-  const titleColor = tone === "light" ? "text-white" : "text-forest-950";
+  const titleColor = tone === "light" ? "text-white" : "text-[#18364a]";
   const subColor = tone === "light" ? "text-sand-100/80" : "text-ink-500";
 
   return (
     <div className={`${isCenter ? "text-center mx-auto" : ""} max-w-2xl ${className}`}>
       {eyebrow && (
-        <p className="mb-3 text-xs font-semibold tracking-[0.14em] text-gold-600 uppercase">
+        <p className="mb-3 text-xs font-semibold tracking-[0.14em] text-green-600 uppercase">
           {eyebrow}
         </p>
       )}
-      <h2 className={`font-display text-3xl sm:text-4xl leading-tight ${titleColor}`}>
+      <h2 className={`font-display text-3xl font-semibold sm:text-4xl leading-tight ${titleColor}`}>
         {title}
       </h2>
       <span
-        className={`mt-4 block h-[3px] w-14 bg-gold-500 ${isCenter ? "mx-auto" : ""}`}
+        className={`mt-4 block h-[3px] w-14 bg-green-500 ${isCenter ? "mx-auto" : ""}`}
         aria-hidden="true"
       />
       {subtitle && <p className={`mt-4 text-base leading-relaxed ${subColor}`}>{subtitle}</p>}

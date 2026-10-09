@@ -51,12 +51,12 @@ const items = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-20">
+    <section className="mx-auto  py-6 sm:py-10 lg:py-12">
       <div className="container-edge">
         <SectionHeading
           eyebrow="What we offer"
           title="Our services"
-          subtitle="Reliable travel solutions designed around your journey."
+          subtitle="We offer a wide range of reliable and affordable travel services across Kenya and beyond."
         />
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
@@ -74,11 +74,11 @@ export default function ServicesSection() {
                 </div>
               </div>
               <div className="flex flex-1 flex-col p-5">
-                <h3 className="font-display text-lg text-forest-950">{item.name}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">{item.description}</p>
+                <h3 className="font-display text-lg font-semibold text-[#18364a]">{item.name}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-[#18364a]">{item.description}</p>
                 <Link
                   href={item.href}
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-forest-900 link-underline"
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-green-600 link-underline"
                 >
                   View service
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

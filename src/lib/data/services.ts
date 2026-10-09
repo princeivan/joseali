@@ -9,7 +9,7 @@ export const services: Service[] = [
     description:
       "Landing in Mombasa/Malindi/Diani or flying out for your next trip? We track your flight, meet you at arrivals and get you on the road without delay. The same applies in reverse — tell us your flight time and we'll have you at check-in with time to spare.",
     heroImage: { src: placeholderImage("airport-transfer-hero"), alt: "Private vehicle waiting at a Kenyan airport pickup point" },
-    cardImage: { src: placeholderImage("airport-transfer-card"), alt: "Airport transfer vehicle" },
+    cardImage: { src: placeholderImage("svc-airport"), alt: "Airport transfer vehicle" },
     icon: "plane",
     whatOffered: [
       "Flight tracking, so we adjust for early or delayed arrivals",
@@ -38,7 +38,7 @@ export const services: Service[] = [
     description:
       "Travelling by SGR between Nairobi and Mombasa? We handle the last leg of your journey — pickup from Mombasa Terminus or drop-off in good time for departure, with a driver who knows the train schedule.",
     heroImage: { src: placeholderImage("sgr-transfer-hero"), alt: "SGR train pulling into a Kenyan station" },
-    cardImage: { src: placeholderImage("sgr-transfer-card"), alt: "SGR transfer vehicle" },
+    cardImage: { src: placeholderImage("svc-sgr"), alt: "SGR transfer vehicle" },
     icon: "train",
     whatOffered: [
       "Pickup from Mombasa Terminus (Miritini) to your hotel or home",
@@ -60,7 +60,7 @@ export const services: Service[] = [
     description:
       "Not every trip is an airport run. Whether it's a hotel-to-hotel transfer, a day out along the coast, or transport for a group event, we arrange a vehicle that fits your route and party size.",
     heroImage: { src: placeholderImage("local-transfer-hero"), alt: "Coastal road transfer vehicle" },
-    cardImage: { src: placeholderImage("local-transfer-card"), alt: "Local transfer vehicle" },
+    cardImage: { src: placeholderImage("mombasa-1"), alt: "Local transfer vehicle" },
     icon: "car",
     whatOffered: ["Hotel-to-hotel and point-to-point transfers", "Full-day and half-day vehicle hire", "Event and group transport", "Flexible scheduling"],
     whoItsFor: ["Holidaymakers exploring the coast", "Event organisers", "Local travellers without their own transport"],
@@ -73,7 +73,7 @@ export const services: Service[] = [
     description:
       "We support companies, NGOs and event organisers with recurring or one-off transport needs — staff transfers, delegate pickups, conference logistics and executive transport, coordinated through one point of contact.",
     heroImage: { src: placeholderImage("corporate-transport-hero"), alt: "Corporate delegation vehicle at a Mombasa hotel" },
-    cardImage: { src: placeholderImage("corporate-transport-card"), alt: "Corporate transport vehicle" },
+    cardImage: { src: placeholderImage("mombasa-2"), alt: "Corporate transport vehicle" },
     icon: "briefcase",
     whatOffered: ["Delegate and staff transfers", "Conference and event logistics", "Executive vehicles", "Invoiced billing for registered businesses"],
     whoItsFor: ["Companies and NGOs", "Conference and event organisers", "Government and institutional delegations"],
@@ -100,7 +100,7 @@ export const services: Service[] = [
     description:
       "The Kenyan coast is as much about the water as the land. We arrange dhow trips, snorkelling excursions and island crossings to Wasini and beyond, paired with transport to and from your hotel.",
     heroImage: { src: placeholderImage("marine-experience-hero"), alt: "Traditional dhow boat off the Kenyan coast" },
-    cardImage: { src: placeholderImage("marine-experience-card"), alt: "Marine excursion boat" },
+    cardImage: { src: placeholderImage("diani-1"), alt: "Marine excursion boat" },
     icon: "anchor",
     whatOffered: ["Dhow and boat excursions", "Snorkelling and dolphin-watching trips", "Wasini Island crossings", "Hotel-to-jetty transport"],
     whoItsFor: ["Beach holidaymakers", "Families and groups", "Couples looking for a day on the water"],

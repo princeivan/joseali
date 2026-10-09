@@ -12,7 +12,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20">
+    <section className="py-4">
       <div className="container-edge">
         <SectionHeading
           eyebrow="Why us"
@@ -27,8 +27,8 @@ export default function WhyChooseUs() {
                 <f.icon className="h-5.5 w-5.5" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="font-display text-base text-forest-950">{f.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-ink-500">{f.description}</p>
+                <h3 className="font-display font-semibold text-base text-forest-950">{f.title}</h3>
+                <p className="mt-1 font-medium text-sm leading-relaxed text-ink-500">{f.description}</p>
               </div>
             </div>
           ))}

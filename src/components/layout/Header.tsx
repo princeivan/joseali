@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Compass, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Compass, Phone, CalendarDays } from "lucide-react";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CallButton from "@/components/ui/CallButton";
 import { siteConfig } from "@/lib/config";
@@ -76,10 +76,18 @@ export default function Header() {
           </div>
           
           <span className="flex flex-col leading-none">
-            <span className="font-display text-lg tracking-wide text-forest-950">JOSEALI <span className="text-orange-600">TOURS</span></span>
+            <div>
+              <div className="text-[25px] font-bold leading-none tracking-tight text-[#164b85]">
+                Joseali <span className="text-green-600">Tours</span>
+              </div>
+              <div className="mt-1.5 text-[9px] tracking-[2px] text-[#46667a]">
+                EXPLORE · DISCOVER · EXPERIENCE
+              </div>
+            </div>
+            {/* <span className="font-display text-lg tracking-wide text-forest-950">JOSEALI <span className="text-orange-600">TOURS</span></span>
             <span className="mt-0.5 text-[10px] uppercase tracking-[0.12em] text-ink-500">
               {siteConfig.tagline}
-            </span>
+            </span> */}
           </span>
         </Link>
 
@@ -132,8 +140,9 @@ export default function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             href="/book"
-            className="rounded-sm bg-orange-400 px-5 py-2.5 text-sm font-semibold text-forest-950 transition-colors hover:bg-gold-400"
+            className="hidden items-center gap-2 rounded-lg bg-[#168f4b] px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#107b3e] md:flex"
           >
+             <CalendarDays size={17} />
             Book Now
           </Link>
         </div>
@@ -201,13 +210,14 @@ export default function Header() {
           <Link
             href="/book"
             onClick={() => setMobileOpen(false)}
-            className="flex items-center justify-center gap-2 rounded-sm bg-orange-400 px-5 py-3 text-sm font-semibold text-forest-950"
+            className="hidden items-center gap-2 rounded-lg bg-[#168f4b] px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#107b3e] md:flex"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
-            Book Now
+            Book Nows
           </Link>
         </div>
       </div>
     </header>
+
   );
 }
