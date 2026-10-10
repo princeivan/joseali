@@ -23,7 +23,8 @@ export default function AccommodationPage() {
         <div className="container-edge">
           <SectionHeading eyebrow="Where to stay" title="Recommended accommodation" subtitle="These are recommended stays, not confirmed business partnerships." />
           <div className="mt-10">
-            <AccommodationFilterList />
+            {/* <AccommodationFilterList /> */}
+             <h1 className="text-3xl font-extrabold text-center">Coming soon..</h1>
           </div>
         </div>
       </section>

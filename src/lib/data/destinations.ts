@@ -48,7 +48,7 @@ export const destinations: Destination[] = [
     overview:
       "A small coral island off Shimoni with no cars, a coral garden boardwalk, and some of the best dolphin-watching and snorkelling on the south coast.",
     heroImage: { src: placeholderImage("wasini-hero"), alt: "Dhow boat near Wasini Island" },
-    cardImage: { src: placeholderImage("wasini-card"), alt: "Wasini Island coastline" },
+    cardImage: { src: placeholderImage("wasini-2"), alt: "Wasini Island coastline" },
     gallery: [
       { src: placeholderImage("wasini-1"), alt: "Wasini coral garden" },
       { src: placeholderImage("wasini-2"), alt: "Snorkelling near Wasini" },
