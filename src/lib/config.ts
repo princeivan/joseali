@@ -11,7 +11,7 @@ export const siteConfig = {
   tagline: "Safe Journey. Memorable Experiences.",
   description:
     "JoseAli Tours provides reliable airport and SGR transfers, tours, safaris, accommodation and travel experiences across Kenya.",
-  url: "https://josealitours.co.ke",
+  url: "https://www.josealitours.co.ke/",
 
   contact: {
     directorLabel: "Director",
