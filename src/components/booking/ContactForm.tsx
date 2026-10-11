@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, FormEvent } from "react";
-import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { useEffect, useRef, useState, FormEvent } from "react";
+import { CheckCircle2, Loader2, AlertCircle, X } from "lucide-react";
 
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CallButton from "@/components/ui/CallButton";
@@ -19,6 +19,19 @@ export default function ContactForm() {
   >("idle");
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const successNotificationRef = useRef<HTMLDivElement>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (status !== "success") return;
+
+    successNotificationRef.current?.focus({ preventScroll: true });
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+  }, [status]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -68,6 +81,7 @@ export default function ContactForm() {
         return;
       }
 
+      setShowSuccessNotification(true);
       setStatus("success");
     } catch (error) {
       console.error("Contact form request failed:", error);
@@ -98,50 +112,83 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-sm border border-line bg-white p-8 text-center">
-        <CheckCircle2
-          className="mx-auto h-8 w-8 text-emerald-700"
-          aria-hidden="true"
-        />
+      <>
+        {showSuccessNotification && (
+          <div
+            ref={successNotificationRef}
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            tabIndex={-1}
+            className="fixed inset-x-4 top-4 z-[60] mx-auto flex max-w-xl items-start gap-3 rounded-sm border border-green-200 bg-green-50 p-4 text-green-950 shadow-lg focus:outline-none sm:top-6"
+          >
+            <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-green-600" aria-hidden="true" />
+            <div className="min-w-0 flex-1">
+              <p className="font-semibold">Message sent</p>
+              <p className="mt-1 text-sm leading-relaxed">
+                Thank you, {name.trim().split(/\s+/)[0]}. Our team will get back to you shortly.
+              </p>
+            </div>
+            <button
+              type="button"
+              aria-label="Dismiss success notification"
+              onClick={() => {
+                setShowSuccessNotification(false);
+                successHeadingRef.current?.focus({ preventScroll: true });
+              }}
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-sm hover:bg-green-100"
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
+        )}
+        <div className="rounded-sm border border-green-200 bg-white p-6 text-center sm:p-8">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-50">
+            <CheckCircle2
+              className="h-9 w-9 text-green-600"
+              aria-hidden="true"
+            />
+          </div>
 
-        <h3 className="mt-3 font-display text-xl text-forest-950">
-          Message sent
-        </h3>
+          <h3 ref={successHeadingRef} tabIndex={-1} className="mt-5 font-display text-2xl text-[#18364a]">
+            Message sent
+          </h3>
 
-        <p className="mt-2 text-sm text-ink-500">
-          Thank you, {name.split(" ")[0]}. Our team will get back to you
-          shortly.
-        </p>
+          <p className="mt-3 text-sm leading-relaxed text-ink-500">
+            Thank you, {name.trim().split(/\s+/)[0]}. Our team will get back to you
+            shortly.
+          </p>
 
-        <div className="mt-5 flex flex-wrap justify-center gap-3">
-          <WhatsAppButton
-            message={summaryMessage()}
-            label="Follow up on WhatsApp"
-          />
+          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <WhatsAppButton
+              message={summaryMessage()}
+              label="Follow up on WhatsApp"
+            />
 
-          <CallButton />
+            <CallButton />
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setStatus("idle")}
+            className="mt-5 inline-flex min-h-11 items-center justify-center rounded-sm border border-blue-200 px-5 py-3 text-sm font-medium text-blue-700 hover:bg-blue-50"
+          >
+            Send another message
+          </button>
         </div>
-
-        <button
-          type="button"
-          onClick={() => setStatus("idle")}
-          className="mt-5 text-sm font-medium text-forest-900 link-underline"
-        >
-          Send another message
-        </button>
-      </div>
+      </>
     );
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative rounded-sm border border-line bg-white p-6 sm:p-8"
+      className="relative min-w-0 rounded-sm border border-blue-100 bg-white p-5 sm:p-8"
       noValidate
     >
       {/* Honeypot */}
       <div
-        className="absolute -left-[9999px] h-px w-px overflow-hidden"
+        className="absolute h-0 w-0 overflow-hidden opacity-0"
         aria-hidden="true"
       >
         <label htmlFor="contact-website">Website</label>
@@ -156,9 +203,10 @@ export default function ContactForm() {
         />
       </div>
 
-      <h3 className="font-display text-xl text-forest-950">
+      <h3 className="font-display text-2xl text-[#18364a]">
         Send us a message
       </h3>
+      <span className="mt-4 block h-0.5 w-12 bg-green-600" aria-hidden="true" />
 
       <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field label="Full Name">
@@ -166,7 +214,7 @@ export default function ContactForm() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="input-field"
+            className="input-field min-w-0 max-w-full"
             placeholder="Your name"
           />
         </Field>
@@ -176,7 +224,7 @@ export default function ContactForm() {
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="input-field"
+            className="input-field min-w-0 max-w-full"
             placeholder="07XX XXX XXX"
           />
         </Field>
@@ -188,7 +236,7 @@ export default function ContactForm() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="input-field"
+            className="input-field min-w-0 max-w-full"
             placeholder="you@example.com"
           />
         </Field>
@@ -197,7 +245,7 @@ export default function ContactForm() {
           <select
             value={service}
             onChange={(e) => setService(e.target.value)}
-            className="input-field"
+            className="input-field min-w-0 max-w-full"
           >
             <option value="">Select a service</option>
             <option>Airport Transfer</option>
@@ -219,7 +267,7 @@ export default function ContactForm() {
             type="date"
             value={travelDate}
             onChange={(e) => setTravelDate(e.target.value)}
-            className="input-field"
+            className="input-field min-w-0 max-w-full"
           />
         </Field>
       </div>
@@ -238,7 +286,7 @@ export default function ContactForm() {
       </div>
 
       {status === "error" && (
-        <div className="mt-5 flex items-start gap-2 rounded-sm bg-red-50 p-3 text-sm text-red-700">
+        <div role="alert" className="mt-5 flex items-start gap-2 rounded-sm bg-red-50 p-3 text-sm text-red-700">
           <AlertCircle
             className="mt-0.5 h-4 w-4 shrink-0"
             aria-hidden="true"
@@ -251,7 +299,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-forest-900 px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-forest-800 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-blue-600 px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
         {status === "submitting" && (
           <Loader2
@@ -274,7 +322,7 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label className="flex flex-col gap-1.5">
+    <label className="flex min-w-0 flex-col gap-1.5">
       <span className="text-[11px] font-medium uppercase tracking-wide text-ink-500">
         {label}
       </span>

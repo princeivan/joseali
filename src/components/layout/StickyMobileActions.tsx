@@ -1,6 +1,7 @@
 import { Phone, MessageCircle, CalendarCheck } from "lucide-react";
 import Link from "next/link";
 import { telLink, whatsappLink } from "@/lib/config";
+import WhatsAppButton from "../ui/WhatsAppButton";
 
 export default function StickyMobileActions() {
   return (
@@ -10,7 +11,7 @@ export default function StickyMobileActions() {
         className="flex flex-col items-center gap-0.5 py-2.5 text-forest-900"
       >
         <Phone className="h-5 w-5" aria-hidden="true" />
-        <span className="text-[11px] font-medium">Call</span>
+        <span className="text-[11px] font-semibold">Call</span>
       </a>
       <a
         href={whatsappLink()}
@@ -19,11 +20,11 @@ export default function StickyMobileActions() {
         className="flex flex-col items-center gap-0.5 border-x border-line py-2.5 text-[#1DA851]"
       >
         <MessageCircle className="h-5 w-5" aria-hidden="true" />
-        <span className="text-[11px] font-medium">WhatsApp</span>
+        <span className="text-[11px] font-semibold">WhatsApp</span>
       </a>
-      <Link href="/book" className="flex flex-col items-center gap-0.5 bg-gold-500 py-2.5 text-forest-950">
+      <Link href="/book" className="flex flex-col items-center gap-0.5 bg-[#D6A23B] py-2.5 text-forest-950">
         <CalendarCheck className="h-5 w-5" aria-hidden="true" />
-        <span className="text-[11px] font-medium">Book Now</span>
+        <span className="text-[11px] font-semibold">Book Now</span>
       </Link>
     </div>
   );

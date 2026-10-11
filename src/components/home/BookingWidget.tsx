@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Plane, TrainFront, Car, CheckCircle2, Calendar, Search, ChevronDown, CalendarDays, Clock3, LocateIcon, } from "lucide-react";
-import { findFare } from "@/lib/data/fares";
-import { formatKsh } from "@/lib/format";
+import { Plane, TrainFront, Car, CheckCircle2, Search } from "lucide-react";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CallButton from "@/components/ui/CallButton";
 
@@ -14,8 +12,6 @@ const tabs: { id: string; key: Tab; icon: typeof Plane }[] = [
   { id: "other", key: "Other Transfers", icon: Car },
 ];
 
-type Result = { type: "fare"; amount: number } | { type: "quote" } | null;
-
 export default function BookingWidget() {
   const [tab, setTab] = useState<Tab>("Airport Transfer");
   const [pickup, setPickup] = useState("");
@@ -23,25 +19,19 @@ export default function BookingWidget() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [passengers, setPassengers] = useState("1");
-  const [result, setResult] = useState<Result>(null);
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!pickup || !dropoff || !date) return;
 
-    const fare = findFare(pickup, dropoff);
-    if (fare && fare.priceKsh > 0) {
-      setResult({ type: "fare", amount: fare.priceKsh });
-    } else {
-      setResult({ type: "quote" });
-    }
+    // The destination rate card has no pickup origin, and this form does
+    // not select a vehicle. Request a quote rather than assume a fare.
     setSubmitted(true);
   }
 
   function reset() {
     setSubmitted(false);
-    setResult(null);
   }
 
   return (
@@ -174,30 +164,13 @@ export default function BookingWidget() {
         </div>
 
         <div className="mt-5 rounded-md bg-sand-50 p-4 sm:p-5">
-          {result?.type === "fare" ? (
             <p className="break-words text-sm leading-6 text-ink-700">
-              Estimated fare for {pickup} → {dropoff}:{" "}
-              <span className="font-display text-lg text-forest-900">
-                {formatKsh(result.amount)}
-              </span>
-
-              <br />
-
-              <span className="text-xs leading-5 text-ink-500">
-                The final price will be confirmed by our team based on the
-                vehicle and exact pickup point.
-              </span>
-            </p>
-          ) : (
-            <p className="break-words text-sm leading-6 text-ink-700">
-              We don&apos;t have a fixed fare on file for {pickup} → {dropoff}
-              yet.{" "}
+              For {pickup} → {dropoff},{" "}
               <span className="font-medium text-forest-900">
                 Request a Quote
               </span>{" "}
-              — our team will get back to you with pricing.
+              — our team will confirm pricing for your pickup point and vehicle.
             </p>
-          )}
         </div>
 
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

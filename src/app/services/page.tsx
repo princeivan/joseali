@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceCard from "@/components/cards/ServiceCard";
 import { services } from "@/lib/data/services";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description: "Airport transfers, SGR transfers, local and corporate transport, bush safaris and marine experiences from JoseAli Tours.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

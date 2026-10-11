@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Clock, MapPin, CheckCircle2, XCircle } from "lucide-react";
@@ -17,8 +18,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const tour = getTourBySlug(slug);
-  if (!tour) return {};
-  return { title: tour.name, description: tour.shortDescription };
+  if (!tour) notFound();
+  return pageMetadata({
+    title: tour.name,
+    description: tour.shortDescription,
+    path: `/tours/${tour.slug}`,
+    image: { url: `/images/social/tours/${tour.slug}.jpg`, width: 1200, height: 630, alt: tour.heroImage.alt },
+  });
 }
 
 export default async function TourDetailPage({ params }: { params: Promise<{ slug: string }> }) {

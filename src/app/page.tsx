@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/config";
 import Hero from "@/components/home/Hero";
 import BookingWidget from "@/components/home/BookingWidget";
 import ServicesSection from "@/components/home/ServicesSection";
@@ -10,6 +12,13 @@ import HowItWorks from "@/components/home/HowItWorks";
 import Testimonials from "@/components/home/Testimonials";
 import Partners from "@/components/home/Partners";
 import CTASection from "@/components/home/CTASection";
+
+export const metadata = pageMetadata({
+  title: `${siteConfig.name} | Transport, Tours & Safaris in Kenya`,
+  description: siteConfig.description,
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default function HomePage() {
   return (
@@ -25,7 +34,7 @@ export default function HomePage() {
       <HowItWorks />
       <Testimonials />
       <Partners />
-      <CTASection />
+      {/* <CTASection /> */}
     </>
   );
 }

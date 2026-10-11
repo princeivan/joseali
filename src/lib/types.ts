@@ -89,17 +89,19 @@ export type Testimonial = {
 
 export type Partner = {
   name: string;
-  category: "Airlines" | "SGR / Railway" | "Hotels & Resorts" | "Travel Operators" | "Payments";
+  category: "Airlines" | "Airports" | "SGR / Railway" | "Hotels & Resorts" | "Travel Operators" | "Connectivity" | "Payments";
+  logo?: string;
   isConfirmed: boolean;
 };
 
+export type FareVehicle = "saloon" | "noah" | "van11" | "van16";
+
 export type FareRoute = {
-  origin: string;
   destination: string;
-  vehicleType: "Sedan" | "Private Van" | "SUV" | "Minibus" | "Coaster Bus";
-  passengerRange: string;
-  /** 0 = price not yet supplied; UI should show "Contact for price" */
-  priceKsh: number;
+  region: "Mombasa" | "North and West Coast" | "Mombasa South Coast" | "Other Areas";
+  distanceKm: number | null;
+  /** null = price not supplied; show "Contact for price". */
+  prices: Record<FareVehicle, number | null>;
 };
 
 export type GalleryCategory =

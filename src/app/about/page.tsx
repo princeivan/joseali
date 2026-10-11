@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, Repeat, BadgeCheck, HeartHandshake, Smile, Sofa } from "lucide-react";
@@ -7,10 +8,11 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { placeholderImage } from "@/lib/images";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description: "Learn about JoseAli Tours, a Kenyan travel and transport company offering transfers, tours, safaris and accommodation across the coast.",
-};
+  path: "/about",
+});
 
 const values = [
   { icon: ShieldCheck, label: "Safety" },

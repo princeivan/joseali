@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import DestinationsFilterList from "@/components/destinations/DestinationsFilterList";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Destinations",
   description: "Discover Kenya's coast, safari parks, cities and marine destinations with JoseAli Tours.",
-};
+  path: "/destinations",
+});
 
 export default function DestinationsPage() {
   return (

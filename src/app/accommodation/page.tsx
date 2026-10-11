@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AccommodationFilterList from "@/components/accommodation/AccommodationFilterList";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Accommodation",
   description: "Recommended hotels, resorts and stays along the Kenyan coast, selected to suit your journey and budget.",
-};
+  path: "/accommodation",
+});
 
 export default function AccommodationPage() {
   return (

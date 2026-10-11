@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import BookingForm from "@/components/booking/BookingForm";
 import FareCalculator from "@/components/booking/FareCalculator";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Book Now",
   description: "Request a transfer, tour, safari, accommodation or marine experience with JoseAli Tours.",
-};
+  path: "/book",
+});
 
 export default function BookPage() {
   return (

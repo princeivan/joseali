@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -19,8 +20,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const destination = getDestinationBySlug(slug);
-  if (!destination) return {};
-  return { title: destination.name, description: destination.shortDescription };
+  if (!destination) notFound();
+  return pageMetadata({
+    title: destination.name,
+    description: destination.shortDescription,
+    path: `/destinations/${destination.slug}`,
+  });
 }
 
 export default async function DestinationDetailPage({ params }: { params: Promise<{ slug: string }> }) {

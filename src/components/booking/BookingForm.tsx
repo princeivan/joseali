@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, FormEvent } from "react";
-import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { useEffect, useRef, useState, FormEvent } from "react";
+import { CheckCircle2, Loader2, AlertCircle, X, Clock3 } from "lucide-react";
 import { BookingServiceType } from "@/lib/types";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CallButton from "@/components/ui/CallButton";
@@ -59,6 +59,18 @@ export default function BookingForm({ defaultService = "Airport Transfer" }: Pro
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const successNotificationRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status !== "success") return;
+
+    successNotificationRef.current?.focus({ preventScroll: true });
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+  }, [status]);
 
   const isCarHire = service === "Car Hire";
   const isAccommodation = service === "Accommodation";
@@ -115,6 +127,7 @@ export default function BookingForm({ defaultService = "Airport Transfer" }: Pro
         return;
       }
 
+      setShowSuccessNotification(true);
       setStatus("success");
     } catch {
       setStatus("error");
@@ -140,16 +153,50 @@ export default function BookingForm({ defaultService = "Airport Transfer" }: Pro
 
   if (status === "success") {
     return (
+      <>
+      {showSuccessNotification && (
+        <div
+          ref={successNotificationRef}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          tabIndex={-1}
+          className="fixed inset-x-4 top-4 z-[60] mx-auto flex max-w-xl items-start gap-3 rounded-sm border border-emerald-200 bg-emerald-50 p-4 text-emerald-950 shadow-lg focus:outline-none sm:top-6"
+        >
+          <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-emerald-700" aria-hidden="true" />
+          <div className="flex-1">
+            <p className="font-semibold">Thank you! Your booking request has been received.</p>
+            <p className="mt-1 text-sm leading-relaxed">Our team will contact you shortly to confirm availability and pricing.</p>
+          </div>
+          <button
+            type="button"
+            aria-label="Dismiss success notification"
+            onClick={() => setShowSuccessNotification(false)}
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-sm hover:bg-emerald-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700"
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
+      )}
       <div className="rounded-sm border border-line bg-white p-8">
         <div className="flex items-start gap-3">
           <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-emerald-700" aria-hidden="true" />
-          <div>
-            <h3 className="font-display text-xl text-forest-950">Thank you</h3>
-            <p className="mt-1 text-sm leading-relaxed text-ink-500">
-              Your booking request has been received. Our team will contact you shortly to
-              confirm availability and final pricing.
-            </p>
-          </div>
+          <div className="min-w-0 flex-1">
+      <h3 className="text-lg font-bold leading-snug text-[#073C32] sm:text-xl">
+        Booking request received!
+      </h3>
+
+      <p className="mt-2 text-sm leading-6 text-[#40564B] sm:text-[15px]">
+        Thank you for choosing JoseAli Tours.
+        We'll contact you shortly to confirm availability
+        and the final fare.
+      </p>
+
+      <div className="mt-3 flex items-center gap-2 text-xs font-medium text-[#52665D]">
+        <Clock3 className="h-4 w-4 shrink-0" aria-hidden="true" />
+        Our team will be in touch soon.
+      </div>
+    </div>
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
           <WhatsAppButton message={summaryMessage()} label="Send details on WhatsApp" />
@@ -163,6 +210,7 @@ export default function BookingForm({ defaultService = "Airport Transfer" }: Pro
           </button>
         </div>
       </div>
+      </>
     );
   }
 

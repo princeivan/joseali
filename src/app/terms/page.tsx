@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { siteConfig } from "@/lib/config";
 
-export const metadata: Metadata = { title: "Terms & Conditions" };
+export const metadata: Metadata = pageMetadata({
+  title: "Terms & Conditions",
+  description: "Read the terms for JoseAli Tours enquiries, bookings, transfers and travel services.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

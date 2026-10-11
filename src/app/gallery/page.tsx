@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Gallery",
   description: "Photos of JoseAli Tours vehicles, destinations, tours and stays across Kenya.",
-};
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   return (

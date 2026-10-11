@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Suspense } from "react";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ToursFilterList from "@/components/tours/ToursFilterList";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Tours & Travel",
   description: "Browse JoseAli Safaris' tour packages — coastal getaways, bush safaris, city tours and marine experiences across Kenya.",
-};
+  path: "/tours",
+});
 
 export default function ToursPage() {
   return (

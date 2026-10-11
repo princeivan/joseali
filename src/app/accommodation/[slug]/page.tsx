@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MapPin, CheckCircle2, Clock } from "lucide-react";
@@ -15,8 +16,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const acc = getAccommodationBySlug(slug);
-  if (!acc) return {};
-  return { title: acc.name, description: acc.shortDescription };
+  if (!acc) notFound();
+  return pageMetadata({
+    title: acc.name,
+    description: acc.shortDescription,
+    path: `/accommodation/${acc.slug}`,
+  });
 }
 
 export default async function AccommodationDetailPage({ params }: { params: Promise<{ slug: string }> }) {

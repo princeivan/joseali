@@ -110,7 +110,7 @@ export default function Hero() {
     {/* Text beneath the image */}
     <div className="bg-[#073C32] px-5 pb-8 pt-7 text-center">
       <p className="text-xs font-semibold uppercase tracking-[2px] text-[#D6A23B]">
-        Your journey starts here
+        Welcome to JoseAli Tours
       </p>
 
       <h1 className="mx-auto mt-3 max-w-[400px] text-[32px] font-extrabold leading-[1.12] tracking-tight">
@@ -121,8 +121,7 @@ export default function Hero() {
       </h1>
 
       <p className="mx-auto mt-4 max-w-[360px] text-[15px] leading-6 text-white/85">
-        From coastal escapes to unforgettable safaris,
-        we&apos;ll help you plan a journey worth remembering.
+        Airport/Sgr transfers, coastal tours and safaris. Local service from Diani.
       </p>
 
       <div className="mt-6 flex flex-col gap-3 min-[420px]:flex-row min-[420px]:justify-center">
@@ -156,7 +155,7 @@ export default function Hero() {
 
     <div className="relative z-10 mx-auto w-full max-w-[1240px] px-6 py-16 text-center">
       <p className="text-xs font-semibold uppercase tracking-[3px] text-[#D6A23B]">
-        Your journey starts here
+        Welcome to JoseAli Tours
       </p>
 
       <h1 className="mx-auto mt-4 max-w-[760px] text-[46px] font-extrabold leading-[1.08] tracking-tight lg:text-[58px]">
@@ -165,8 +164,7 @@ export default function Hero() {
       </h1>
 
       <p className="mx-auto mt-5 max-w-[590px] text-base leading-7 text-white/90 lg:text-lg">
-        From coastal escapes to unforgettable safaris,
-        we&apos;ll help you plan a journey worth remembering.
+        Airport/Sgr transfers, coastal tours and safaris. Local service from Diani.
       </p>
 
       <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
