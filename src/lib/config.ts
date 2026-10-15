@@ -7,21 +7,21 @@
  */
 
 export const siteConfig = {
-  name: "JoseAli Tours",
+  name: "Joseali Tours",
   tagline: "Safe Journey. Memorable Experiences.",
   description:
-    "JoseAli Tours provides reliable airport and SGR transfers, tours, safaris, accommodation and travel experiences across Kenya.",
+    "Joseali Tours provides reliable airport and SGR transfers, tours, safaris, accommodation and travel experiences across Kenya.",
   url: "https://www.josealitours.co.ke/",
 
   contact: {
     directorLabel: "Director",
-    directorName: "JoseAli Tours",
+    directorName: "Joseali Tours",
     // Primary WhatsApp / booking number
     altContactName: "Joseph",
     altContactRole: "SGR & Airport Transfers",
-    phoneDisplay: "0726 887 951",
+    phoneDisplay: "0726 887 951/0728539686",
     phoneE164: "+254726887951",
-    email: "princeivan733@gmail.com",
+    email: "josemurigi@gmail.com",
     // Location is intentionally general until the client confirms an exact address.
     city: "Mombasa, Kenya",
     addressConfirmed: false,
@@ -30,7 +30,7 @@ export const siteConfig = {
   whatsapp: {
     // WhatsApp number in international format, no + or leading zeros.
     number: "254726887951",
-    defaultMessage: "Hello JoseAli Tours, I would like to enquire about your services.",
+    defaultMessage: "Hello Joseali Tours, I would like to enquire about your services.",
   },
   location: {
     name: "Diani, Kenya",

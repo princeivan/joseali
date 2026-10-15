@@ -100,8 +100,8 @@ export default function Hero() {
     {/* Image directly below the header */}
     <div className="relative h-[260px] w-full">
       <img
-        src="/images/hero7.png"
-        alt="Discover Kenya with JoseAli Tours"
+        src="/images/hero8.png"
+        alt="Discover Kenya with Joseali Tours"
         className="h-full w-full object-cover object-center"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -110,7 +110,7 @@ export default function Hero() {
     {/* Text beneath the image */}
     <div className="bg-[#073C32] px-5 pb-8 pt-7 text-center">
       <p className="text-xs font-semibold uppercase tracking-[2px] text-[#D6A23B]">
-        Welcome to JoseAli Tours
+        Welcome to Joseali Tours
       </p>
 
       <h1 className="mx-auto mt-3 max-w-[400px] text-[32px] font-extrabold leading-[1.12] tracking-tight">

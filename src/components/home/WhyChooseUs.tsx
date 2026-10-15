@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
       <div className="container-edge">
         <SectionHeading
           eyebrow="Why us"
-          title="Why travel with JoseAli Tours?"
+          title="Why travel with Joseali Tours?"
           align="center"
           className="mx-auto"
         />
