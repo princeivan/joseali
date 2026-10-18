@@ -13,15 +13,14 @@ import { siteConfig } from "@/lib/config";
  *                                   for account-level operations/templates)
  *   WHATSAPP_RECIPIENT_PHONE       (defaults to siteConfig.whatsapp.number)
  *
- * Note: the Cloud API's free-form text endpoint used below only delivers
- * within an open 24-hour customer conversation window. For guaranteed
- * delivery of business notifications in production, register an
- * approved message template with Meta and send that instead — the
- * request shape below can be swapped for a `type: "template"` payload
- * without changing anything that calls this function.
+ * Sends approved templates using positional body parameters.
+ *   WHATSAPP_TEMPLATE_LANGUAGE    (defaults to en_US; must match approval)
  */
 
-async function sendWhatsAppTextMessage(message: string): Promise<{ success: boolean; error?: string }> {
+async function sendWhatsAppTemplateMessage(
+  name: string,
+  values: (string | undefined)[]
+): Promise<{ success: boolean; error?: string }> {
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
   const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
   const recipient = process.env.WHATSAPP_RECIPIENT_PHONE || siteConfig.whatsapp.number;
@@ -41,14 +40,26 @@ async function sendWhatsAppTextMessage(message: string): Promise<{ success: bool
       body: JSON.stringify({
         messaging_product: "whatsapp",
         to: recipient,
-        type: "text",
-        text: { body: message },
+        type: "template",
+        template: {
+          name,
+          language: { code: process.env.WHATSAPP_TEMPLATE_LANGUAGE || "en_US" },
+          components: [{
+            type: "body",
+            parameters: values.map((value) => ({
+              type: "text",
+              text: value?.replace(/[\r\n\t]+/g, " ").trim() || "Not provided",
+            })),
+          }],
+        },
       }),
     });
     const responseText = await res.text();
-    
 
-    let data: any;
+    let data: {
+      error?: { code?: number; message?: string; error_data?: { details?: string } };
+      messages?: { id?: string; message_status?: string }[];
+    };
 
     try {
       data = JSON.parse(responseText);
@@ -69,14 +80,14 @@ async function sendWhatsAppTextMessage(message: string): Promise<{ success: bool
       };
     }
 
-    console.log("[whatsapp] Meta accepted message", {
-      messageId: data.messages?.[0]?.id,
-      status: data.messages?.[0]?.message_status,
-    });
+    // console.log("[whatsapp] Meta accepted message", {
+    //   messageId: data.messages?.[0]?.id,
+    //   status: data.messages?.[0]?.message_status,
+    // });
 
     return { success: true };
   } catch (error) {
-    console.error("[whatsapp] Request exception", error);
+    // console.error("[whatsapp] Request exception", error);
 
     return {
       success: false,
@@ -85,90 +96,44 @@ async function sendWhatsAppTextMessage(message: string): Promise<{ success: bool
   }
 }
 
-//     if (!res.ok) {
-//       const errorBody = await res.text();
-//       console.error("[whatsapp] Notification failed:", res.status, errorBody);
-//       return { success: false, error: `WhatsApp API responded ${res.status}` };
-//     }
-
-//     return { success: true };
-//   } catch (err) {
-//     console.error("[whatsapp] Notification error:", err);
-//     return { success: false, error: "WhatsApp request failed" };
-//   }
-//     console.log("[whatsapp] Meta accepted message", {
-//       messageId: data.messages?.[0]?.id,
-//       status: data.messages?.[0]?.message_status,
-//     });
-
-//     return { success: true };
-// }
-
-function formatBookingWhatsAppMessage(booking: BookingRequest): string {
-  const lines = [
-    "🚐 NEW JOSEALI TOURS BOOKING",
-    "",
-    `Service: ${booking.service}`,
-    "",
-    "Customer:",
-    booking.name,
-    "",
-    "Phone:",
-    booking.phone,
-  ];
-
-  if (booking.email) lines.push("", "Email:", booking.email);
-  if (booking.pickup) lines.push("", "Pickup:", booking.pickup);
-  if (booking.destination) lines.push("", "Destination:", booking.destination);
-  if (booking.date || booking.preferredDate || booking.hireStartDate || booking.checkInDate) {
-    lines.push("", "Date:", booking.date || booking.preferredDate || booking.hireStartDate || booking.checkInDate || "");
-  }
-  if (booking.time) lines.push("", "Time:", booking.time);
-  if (booking.passengers || booking.numberOfPeople || booking.guests) {
-    lines.push("", "Passengers:", booking.passengers || booking.numberOfPeople || booking.guests || "");
-  }
-  if (booking.vehicleType) lines.push("", "Vehicle Type:", booking.vehicleType);
-  if (booking.hireEndDate) lines.push("", "Hire End Date:", booking.hireEndDate);
-  if (booking.driverPreference) lines.push("", "Driver Preference:", booking.driverPreference);
-  if (booking.checkOutDate) lines.push("", "Check-out Date:", booking.checkOutDate);
-  if (booking.accommodationPreference) lines.push("", "Accommodation Preference:", booking.accommodationPreference);
-  if (booking.tourOrDestination) lines.push("", "Tour / Destination:", booking.tourOrDestination);
-  if (booking.flightOrTrainDetails) lines.push("", "Flight/Train Details:", booking.flightOrTrainDetails);
-  if (booking.notes) lines.push("", "Additional Information:", booking.notes);
-
-  lines.push("", "Status:", "BOOKING REQUEST");
-
-  return lines.join("\n");
-}
-
 export async function sendWhatsAppBookingNotification(
   booking: BookingRequest
 ): Promise<{ success: boolean; error?: string }> {
-  return sendWhatsAppTextMessage(formatBookingWhatsAppMessage(booking));
-}
+  const additionalDetails = [
+    ["Email", booking.email],
+    ["Vehicle Type", booking.vehicleType],
+    ["Hire End Date", booking.hireEndDate],
+    ["Driver Preference", booking.driverPreference],
+    ["Check-out Date", booking.checkOutDate],
+    ["Accommodation Preference", booking.accommodationPreference],
+    ["Flight/Train Details", booking.flightOrTrainDetails],
+    ["Additional Information", booking.notes],
+  ].filter(([, value]) => value).map(([label, value]) => `${label}: ${value}`).join("; ");
 
-function formatContactWhatsAppMessage(contact: ContactRequest): string {
-  const lines = [
-    "✉️ NEW JOSEALI TOURS ENQUIRY",
-    "",
-    "Name:",
-    contact.name,
-    "",
-    "Phone:",
-    contact.phone,
-  ];
-
-  if (contact.email) lines.push("", "Email:", contact.email);
-  if (contact.service) lines.push("", "Service:", contact.service);
-  if (contact.travelDate) lines.push("", "Travel Date:", contact.travelDate);
-  lines.push("", "Message:", contact.message);
-  lines.push("", "Status:", "CONTACT ENQUIRY");
-
-  return lines.join("\n");
+  // Body parameters {{1}} through {{9}} in the approved template's order.
+  return sendWhatsAppTemplateMessage("joseali_booking_alert", [
+    booking.name,
+    booking.phone,
+    booking.service,
+    booking.pickup,
+    booking.destination || booking.tourOrDestination,
+    booking.date || booking.preferredDate || booking.hireStartDate || booking.checkInDate,
+    booking.time,
+    booking.passengers || booking.numberOfPeople || booking.guests,
+    additionalDetails,
+  ]);
 }
 
 export async function sendWhatsAppContactNotification(
   contact: ContactRequest
 ): Promise<{ success: boolean; error?: string }> {
-  return sendWhatsAppTextMessage(formatContactWhatsAppMessage(contact));
+  // Body parameters {{1}} through {{6}} in the approved template's order.
+  return sendWhatsAppTemplateMessage("joseali_contact_alert", [
+    contact.name,
+    contact.phone,
+    contact.email,
+    contact.service,
+    contact.travelDate,
+    contact.message,
+  ]);
 }
