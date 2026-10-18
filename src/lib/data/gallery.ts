@@ -27,13 +27,13 @@ const galleryConfig = [
   {
     category: "Safari",
     folder: "safari",
-    count: 30,
+    count: 40,
     alt: "Kenya safari experience",
   },
   {
     category: "Tours",
     folder: "tours",
-    count: 15,
+    count: 22,
     alt: "JoseAli Tours travel experience",
   },
   {
@@ -63,7 +63,7 @@ const galleryConfig = [
   {
     category: "Travel",
     folder: "travel",
-    count: 1,
+    count: 2,
     alt: "Kenya travel",
   },
 ] as const;

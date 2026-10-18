@@ -45,19 +45,64 @@ async function sendWhatsAppTextMessage(message: string): Promise<{ success: bool
         text: { body: message },
       }),
     });
+    const responseText = await res.text();
+    
 
+    let data: any;
+
+    try {
+      data = JSON.parse(responseText);
+    } catch {
+      data = {};
+    }
     if (!res.ok) {
-      const errorBody = await res.text();
-      console.error("[whatsapp] Notification failed:", res.status, errorBody);
-      return { success: false, error: `WhatsApp API responded ${res.status}` };
+      console.error("[whatsapp] Meta API error", {
+        status: res.status,
+        code: data.error?.code,
+        message: data.error?.message,
+        details: data.error?.error_data?.details,
+      });
+
+      return {
+        success: false,
+        error: data.error?.message || `HTTP ${res.status}`,
+      };
     }
 
+    console.log("[whatsapp] Meta accepted message", {
+      messageId: data.messages?.[0]?.id,
+      status: data.messages?.[0]?.message_status,
+    });
+
     return { success: true };
-  } catch (err) {
-    console.error("[whatsapp] Notification error:", err);
-    return { success: false, error: "WhatsApp request failed" };
+  } catch (error) {
+    console.error("[whatsapp] Request exception", error);
+
+    return {
+      success: false,
+      error: "WhatsApp request failed",
+    };
   }
 }
+
+//     if (!res.ok) {
+//       const errorBody = await res.text();
+//       console.error("[whatsapp] Notification failed:", res.status, errorBody);
+//       return { success: false, error: `WhatsApp API responded ${res.status}` };
+//     }
+
+//     return { success: true };
+//   } catch (err) {
+//     console.error("[whatsapp] Notification error:", err);
+//     return { success: false, error: "WhatsApp request failed" };
+//   }
+//     console.log("[whatsapp] Meta accepted message", {
+//       messageId: data.messages?.[0]?.id,
+//       status: data.messages?.[0]?.message_status,
+//     });
+
+//     return { success: true };
+// }
 
 function formatBookingWhatsAppMessage(booking: BookingRequest): string {
   const lines = [

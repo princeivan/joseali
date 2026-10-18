@@ -132,3 +132,23 @@ html {
   outline-offset: 1px;
   border-color: var(--gold-500);
 }
+
+/* Slow camera movement and overlapping fades give the hero a film-like feel. */
+.hero-slide {
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide-motion[data-active="true"] {
+  animation: hero-camera 7s linear both;
+}
+
+@keyframes hero-camera {
+  from { transform: scale(1); }
+  to { transform: scale(1.09); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide-motion[data-active="true"] {
+    animation: none;
+  }
+}
